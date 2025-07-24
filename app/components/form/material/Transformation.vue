@@ -122,6 +122,7 @@ defineExpose({
     <FormMaterialTransformationMaterials
         ref="materialsForm"
         :materials="workingMaterials"
+        :type="transformationType"
     />
   </template>
 

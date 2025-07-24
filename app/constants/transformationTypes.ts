@@ -7,6 +7,10 @@ export const TRANSFORMATION_TYPES: TransformationType[] = [
   {
     label: 'Резка по длине',
     value: 1
+  },
+  {
+    label: 'Стыковка по длине',
+    value: 2
   }
 ]
 

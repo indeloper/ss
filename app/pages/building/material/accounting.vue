@@ -84,10 +84,23 @@ const menuOptions = computed<MenuOption[]>(() => {
                 selectedTransformationType.value = 1
               }
             }, {
-              default: () => 'Резка'
+              default: () => 'Резка по длине'
             })
           },
           key: 'cut',
+        },
+        {
+          label: () => {
+            return h('p', {
+              onClick: () => {
+                showTransformationDrawer.value = true
+                selectedTransformationType.value = 2
+              }
+            }, {
+              default: () => 'Стыковка по длине'
+            })
+          },
+          key: 'join',
         },
       ],
     },

@@ -44,7 +44,7 @@ const hide = ref(false)
   <n-drawer
       v-model:show="show"
       placement="right"
-      :width="!hide ? '90vw' : '5vw'"
+      :width="!hide ? '95vw' : '5vw'"
       :show-mask="!hide"
   >
     <n-drawer-content>
