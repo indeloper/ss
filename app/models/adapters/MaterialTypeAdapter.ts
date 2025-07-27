@@ -1,4 +1,5 @@
 import { MaterialUnitAdapter } from './MaterialUnitAdapter'
+import { MaterialPropertyAdapter } from './MaterialPropertyAdapter'
 import type { ApiMaterialType, TransformedMaterialType } from '../interfaces'
 
 export class MaterialTypeAdapter {
@@ -14,6 +15,9 @@ export class MaterialTypeAdapter {
       instruction: apiMaterialType.attributes.instruction,
       material_unit: apiMaterialType.relationships?.material_unit
         ? MaterialUnitAdapter.transform(apiMaterialType.relationships.material_unit)
+        : undefined,
+      properties: apiMaterialType.relationships?.properties
+        ? MaterialPropertyAdapter.transformMany(apiMaterialType.relationships.properties.data || apiMaterialType.relationships.properties)
         : undefined
     }
   }
@@ -21,4 +25,4 @@ export class MaterialTypeAdapter {
   static transformMany(apiMaterialTypes: ApiMaterialType[]): TransformedMaterialType[] {
     return apiMaterialTypes.map(type => this.transform(type))
   }
-} 
+}

@@ -32,6 +32,7 @@ const props = defineProps<{
   itemDisabled?: (item: Material) => boolean
   enableSelection?: boolean
   selectionMode?: 'single' | 'multiple'
+  itemTooltip?: (item: Material) => string
 }>()
 
 const selection = defineModel<string | string[]>('selection', {default: () => []})
@@ -214,7 +215,7 @@ const contextMenuOptionsForComponent = computed(() => {
 
 // Обработчик правого клика
 const handleContextMenu = (event: MouseEvent, material: Material) => {
-  if (!props.enableContextMenu || !props.contextMenuOptions?.length || props.itemDisabled?.(material)) return
+  if (!props.enableContextMenu || !props.contextMenuOptions?.length) return
 
   event.preventDefault()
   selectedMaterial.value = material
@@ -483,13 +484,13 @@ const isItemSelected = (uuid: string): boolean => {
             @contextmenu="handleContextMenu($event, item)"
             :draggable="props.enableDraggable"
             @dragstart="handleDragStart($event, item.uuid, item)"
-            :class="{'pointer-events-none': props.itemDisabled?.(item)}"
         >
           <CardMaterial
               :key="item.uuid"
               :material="item"
               :disabled="props.itemDisabled?.(item)"
               :type="isItemSelected(item.uuid) ? 'info' : undefined"
+              :tooltip="props.itemTooltip"
               v-bind="$attrs"
           >
             <template #action="{item}">

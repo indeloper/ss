@@ -6,7 +6,7 @@ import { useCollectionFilter } from './useCollectionFilter'
 export const useMaterialCollectionFilter = () => {
     const collectionFilter = useCollectionFilter<Material>()
 
-    const filterMaterialsAvailableForJoin = (materials: MaterialCollection): MaterialCollection => {
+    const filterMaterialsAvailableForJoinTransformation = (materials: MaterialCollection): MaterialCollection => {
         const filteredByMaterialType = filterByMaterialType(materials, [
             MaterialTypes.PILE,
             MaterialTypes.I_BEAM,
@@ -14,6 +14,16 @@ export const useMaterialCollectionFilter = () => {
         ])
 
         return filterMaterialWithMaterialProperties(filteredByMaterialType, [9], { allowEmptyProperties: true })
+    }
+
+    const filterMaterialsAvailableForCutTransformation = (materials: MaterialCollection): MaterialCollection => {
+        const filteredByMaterialType = filterByMaterialType(materials, [
+            MaterialTypes.PILE,
+            MaterialTypes.ANGULAR_ELEMENT,
+            MaterialTypes.SQUARE_PIPE
+        ])
+
+        return filteredByMaterialType
     }
 
     const filterByMaterialType = (materials: MaterialCollection, materialTypeId: number | number[]): MaterialCollection => {
@@ -150,7 +160,8 @@ export const useMaterialCollectionFilter = () => {
     }
 
     return {
-        filterMaterialsAvailableForJoin,
+        filterMaterialsAvailableForJoinTransformation,
+        filterMaterialsAvailableForCutTransformation,
         filterMaterialWithMaterialType: filterByMaterialType,
         filterMaterialWithMaterialProperties,
         filterByProjectObject,

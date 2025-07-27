@@ -34,6 +34,23 @@ const menuOptions: MenuOption[] = [
       },
     ]
   },
+  {
+    type: 'group',
+    label: 'Справочники',
+    key: '/library',
+    children: [
+      {
+        label: 'Материалы',
+        key: '/library/material',
+        children: [
+          {
+            label: 'Типы материалов',
+            key: '/library/material/type',
+          },
+        ]
+      },
+    ]
+  },
 ]
 
 const handleNavigate = (data: string) => {

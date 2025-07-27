@@ -227,6 +227,7 @@ export class MaterialCollection extends BaseCollection<Material> {
     /**
      * Фильтрует материалы по массиву ID марок материалов
      * @param brandIds - массив ID марок материалов
+     * @param brandIds - массив ID марок материалов
      * @returns новая коллекция с отфильтрованными материалами
      */
     filterByMaterialBrandIds(brandIds: number[]): this {
@@ -246,13 +247,17 @@ export class MaterialCollection extends BaseCollection<Material> {
         return useMaterialCollectionFilter().filterByMaterialPropertyIds(this, propertyIds) as this
     }
 
+    filterNotJoinedTo(): this {
+        return this.filterBy((material: Material) => !material.join_to)
+    }
+
     /**
      * Фильтрует материалы, которые можно использовать в изготовлении при стыковке по длине
      * @returns MaterialCollection
      */
     filterAvailableToJoinTransformation(): this {
         return useMaterialCollectionFilter()
-            .filterMaterialsAvailableForJoin(this) as this
+            .filterMaterialsAvailableForJoinTransformation(this) as this
     }
 
     filterAvailableToJoinToMaterial(material: Material): this {
@@ -261,7 +266,8 @@ export class MaterialCollection extends BaseCollection<Material> {
     }
 
     filterAvailableToCutTransformation(): this {
-        return this
+        return useMaterialCollectionFilter()
+            .filterMaterialsAvailableForCutTransformation(this) as this
     }
 
     filterAvailableToAngleTransformation(): this {

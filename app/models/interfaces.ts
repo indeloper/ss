@@ -168,6 +168,14 @@ export interface TransformedProjectObject {
   users: TransformedUser[]
 }
 
+export interface TransformedMaterialProperty {
+  id: number
+  uuid?: string
+  name: string
+  description: string | null
+  weight_factor: number
+}
+
 export interface TransformedMaterialType {
   id: number
   uuid?: string
@@ -178,6 +186,7 @@ export interface TransformedMaterialType {
   fixed_quantity?: boolean
   instruction?: string | null
   material_unit?: TransformedMaterialUnit
+  properties?: TransformedMaterialProperty[]
 }
 
 export interface TransformedMaterialUnit {
@@ -203,14 +212,6 @@ export interface TransformedStandard {
   name: string
   weight: number
   material_type: TransformedMaterialType
-}
-
-export interface TransformedMaterialProperty {
-  id: number
-  uuid?: string
-  name: string
-  description: string | null
-  weight_factor: number
 }
 
 export interface TransformedMaterialStandard {
@@ -255,4 +256,4 @@ export interface ApiOperationReason {
 export interface TransformedOperationReason {
   id: number
   name: string
-} 
+}

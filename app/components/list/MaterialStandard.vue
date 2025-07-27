@@ -28,6 +28,7 @@ const props = defineProps<{
   itemDisabled?: (item: MaterialStandard) => boolean
   enableSelection?: boolean
   selectionMode?: 'single' | 'multiple'
+  itemTooltip?: (item: MaterialStandard) => string
 }>()
 
 const selection = defineModel<string | string[]>('selection', { default: () => [] })
@@ -370,6 +371,7 @@ const isItemSelected = (uuid: string): boolean => {
               :material-standard="item"
               :disabled="props.itemDisabled?.(item)"
               :type="isItemSelected(item.uuid) ? 'info' : undefined"
+              :tooltip="props.itemTooltip"
               v-bind="$attrs"
           >
             <template v-for="(_, slot) in $slots" :key="slot" #[slot]="props">

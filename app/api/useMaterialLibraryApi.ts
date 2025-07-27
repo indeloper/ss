@@ -106,11 +106,37 @@ export const useMaterialLibraryApi = () => {
         return response.data
     }
 
+    const createMaterialTypeOnServer = async (data: any) => {
+        const api = useApi()
+        // Извлекаем ID свойств для отправки на сервер
+        const requestData = {
+            ...data,
+            property_ids: data.properties ? data.properties.map((property: any) => property.id) : []
+        }
+
+        const response = await api.post('/library/materials/types', requestData)
+        return response.data
+    }
+
+    const updateMaterialTypeOnServer = async (id: number, data: any) => {
+        console.log(data)
+        const api = useApi()
+        // Извлекаем ID свойств для отправки на сервер
+        const requestData = {
+            ...data
+        }
+
+        const response = await api.put(`/library/materials/types/${id}`, requestData)
+        return response.data
+    }
+
     return {
         fetchMaterialStandardsFromServer,
         fetchMaterialTypesFromServer,
         fetchMaterialBrandsFromServer,
         fetchMaterialUnitsFromServer,
-        fetchMaterialPropertiesFromServer
+        fetchMaterialPropertiesFromServer,
+        createMaterialTypeOnServer,
+        updateMaterialTypeOnServer
     }
 }

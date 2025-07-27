@@ -14,10 +14,21 @@ const props = defineProps<{
 const materialTransformationStore = useMaterialTransformationStore()
 
 const {
+  sheets,
   filteredMaterials,
+  filteredSelectedMaterials,
+  previewResult,
+  resultMaterials,
   cutMaterialOnePart,
   cutMaterialFull,
-  cutMaterialWithParams
+  cutMaterialWithParams,
+  undoCutMaterial,
+  restoreMaterial,
+  confirmJoinResult,
+  canMaterialBeJoined,
+  editJoinResult,
+  deleteJoinResult,
+  clearUnjoined
 } = useMaterialTransformation(
     props.materials,
     materialTransformationStore.materials
@@ -25,6 +36,7 @@ const {
 
 const selectedSourceMaterial = ref<Material | null>(null)
 const showSourceMaterialSplitModal = ref<boolean>(false)
+const showResultMaterialSettingsModal = ref<boolean>(false)
 
 const openSourceMaterialSplitModal = (material: Material) => {
   selectedSourceMaterial.value = material
@@ -33,12 +45,16 @@ const openSourceMaterialSplitModal = (material: Material) => {
 
 const handleSourceMaterialDoubleClick = (uuid: string) => {
   const material = props.materials.findByUuidOrFail(uuid)
-  cutMaterialOnePart(material, props.materials, materialTransformationStore.materials)
+  if (canMaterialBeJoined(material)) {
+    cutMaterialOnePart(material, props.materials, materialTransformationStore.materials)
+  }
 }
 
 const handleSourceMaterialCutConfirmed = (params: CutParams) => {
   if (!selectedSourceMaterial.value) return
-  cutMaterialWithParams(selectedSourceMaterial.value, params, props.materials, materialTransformationStore.materials)
+  if (canMaterialBeJoined(selectedSourceMaterial.value)) {
+    cutMaterialWithParams(selectedSourceMaterial.value, params, props.materials, materialTransformationStore.materials)
+  }
 }
 
 const handleDropToSelectedMaterials = (event: DragEvent) => {
@@ -47,9 +63,58 @@ const handleDropToSelectedMaterials = (event: DragEvent) => {
 
   const material = props.materials.findByUuidOrFail(materialUuid)
   if (!material) return
-
-  cutMaterialFull(material, props.materials, materialTransformationStore.materials)
+  if (canMaterialBeJoined(material)) {
+    cutMaterialFull(material, props.materials, materialTransformationStore.materials)
+  }
 }
+
+const handleConfirmResult = () => {
+
+  showResultMaterialSettingsModal.value = true
+
+  // confirmJoinResult()
+}
+
+const handleClearUnjoined = () => {
+  clearUnjoined()
+}
+
+const selectedMaterialsContextMenuOptions = ref([
+  {
+    label: 'Отменить',
+    key: 'undo',
+    action: (material: Material) => {
+      undoCutMaterial(material)
+    }
+  }
+])
+
+const sourceMaterialsContextMenuOptions = ref([
+  {
+    label: 'Восстановить',
+    key: 'undo',
+    action: (material: Material) => {
+      restoreMaterial(material)
+    }
+  }
+])
+
+const resultMaterialsContextMenuOptions = ref([
+  {
+    label: 'Редактировать',
+    key: 'edit',
+    action: (material: Material) => {
+      editJoinResult(material)
+    }
+  },
+  {
+    label: 'Удалить',
+    key: 'delete',
+    action: (material: Material) => {
+      deleteJoinResult(material)
+    }
+  }
+])
 
 </script>
 
@@ -57,12 +122,21 @@ const handleDropToSelectedMaterials = (event: DragEvent) => {
   <div class="flex flex-col h-full">
     <div class="grid grid-cols-3 gap-4 flex-1 min-h-0">
       <ui-card title="Доступные материалы">
+        <n-alert
+            v-if="previewResult"
+            type="success"
+            :show-icon="false"
+        >
+          Список материалов отфильтрован, исходя из выбранного материала
+        </n-alert>
         <ListMaterial
             :materials="filteredMaterials"
             :item-disabled="item => item.isZeroed"
             @item-double-click="handleSourceMaterialDoubleClick"
             @drag-start="(event, uuid) => event.dataTransfer?.setData('text/plain', uuid)"
             enable-draggable
+            enable-context-menu
+            :context-menu-options="sourceMaterialsContextMenuOptions"
         >
           <template #item-action="{item}">
             <n-button
@@ -81,12 +155,52 @@ const handleDropToSelectedMaterials = (event: DragEvent) => {
           enable-drop
           @drop="handleDropToSelectedMaterials"
       >
-        <ListMaterial :materials="materialTransformationStore.materials">
-        </ListMaterial>
+        <template #actions>
+          <n-button @click="handleClearUnjoined">Очистить</n-button>
+        </template>
+        <CardMaterial
+            v-if="previewResult"
+            :material="previewResult"
+        />
+
+        <n-divider v-if="previewResult"/>
+
+        <ListMaterial
+            :materials="filteredSelectedMaterials"
+            enable-context-menu
+            :context-menu-options="selectedMaterialsContextMenuOptions"
+        />
+        <template #footer>
+          <div class="flex justify-end">
+            <n-button
+                @click="handleConfirmResult"
+                type="primary"
+            >
+              Подтвердить
+            </n-button>
+          </div>
+        </template>
       </ui-card>
-      <ui-card title="Результат"></ui-card>
+      <ui-card title="Результат">
+        <ListMaterial
+            :materials="resultMaterials"
+            enable-context-menu
+            :context-menu-options="resultMaterialsContextMenuOptions"
+        />
+      </ui-card>
     </div>
   </div>
+
+  <n-modal
+      v-model:show="showResultMaterialSettingsModal"
+      class="min-w-[60vw] min-h-[60vh]"
+  >
+    <ui-card title="Параметры создания результата">
+      <div class="grid grid-cols-2 gap-4">
+        <ListMaterial :materials="sheets"/>
+      </div>
+    </ui-card>
+  </n-modal>
 
   <ModalMaterialCut
       v-model:show="showSourceMaterialSplitModal"
