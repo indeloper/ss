@@ -47,7 +47,7 @@ const hide = ref(false)
       :width="!hide ? '95vw' : '5vw'"
       :show-mask="!hide"
   >
-    <n-drawer-content>
+    <n-drawer-content class="bg-gray-100">
 
       <template #header>
         <div class="flex gap-4 items-center justify-between">

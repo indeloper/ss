@@ -186,35 +186,29 @@ const contextMenuOptions = computed(() => [
 <template>
   <div class="flex flex-col h-full">
     <div class="grid grid-cols-3 gap-4 flex-1 min-h-0">
-      <div class="flex flex-col overflow-hidden">
-        <div class="flex-shrink-0 mb-2">
-          <p class="font-medium">Выберите материал</p>
-        </div>
+      <ui-card title="Доступные материалы">
         <ListMaterial
             :materials="materials"
             :context-menu-options="contextMenuOptions"
             @item-click="handleSourceMaterialClick"
             enable-context-menu
+            enable-search
             class="flex-1 overflow-hidden"
         />
-      </div>
-      <div class="col-span-2 flex flex-col overflow-hidden">
-        <div class="flex-shrink-0 mb-2">
-          <p class="font-medium">Результат резки</p>
-        </div>
-        <div class="flex-1 overflow-hidden">
-          <TableMaterial
-              enable-search
-              :materials="resultMaterials"
-              enable-delete
-              @delete:material="handleDeleteResultMaterial"
-              enable-changing
-              @change:material="handleResultMaterialChange"
-              @row:click="handleResultMaterialClick"
-              class="h-full"
-          />
-        </div>
-      </div>
+      </ui-card>
+
+      <ui-card title="Результат резки" class="col-span-2">
+        <TableMaterial
+            enable-search
+            :materials="resultMaterials"
+            enable-delete
+            @delete:material="handleDeleteResultMaterial"
+            enable-changing
+            @change:material="handleResultMaterialChange"
+            @row:click="handleResultMaterialClick"
+            class="h-full"
+        />
+      </ui-card>
     </div>
   </div>
 

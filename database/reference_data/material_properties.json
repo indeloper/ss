@@ -1,0 +1,74 @@
+[
+  {
+    "id": 3,
+    "name": "Клиновидный",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 4,
+    "name": "Обрезок",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 5,
+    "name": "С замком",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 6,
+    "name": "С листом",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 7,
+    "name": "С трубой",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 8,
+    "name": "Спаренный",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 9,
+    "name": "Стыкованный",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  },
+  {
+    "id": 10,
+    "name": "Угловой",
+    "description": null,
+    "created_at": "2025-06-06 15:24:13",
+    "updated_at": "2025-06-06 15:24:13",
+    "deleted_at": null,
+    "weight_factor": 1
+  }
+]

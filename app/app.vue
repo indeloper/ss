@@ -11,6 +11,18 @@ export default {
     return {
       ruRU,
       dateRuRU,
+      theme: {
+        common: {
+          primaryColor: '#001b41',
+          primaryColorHover: '#003366',
+          primaryColorPressed: '#004d99',
+          primaryColorSuppl: '#001b41',
+          errorColor: '#d10d2c',
+          errorColorHover: '#e63946',
+          errorColorPressed: '#f77f00',
+          errorColorSuppl: '#d10d2c'
+        }
+      }
     };
   },
 };
@@ -24,6 +36,7 @@ const pinia = createPinia()
     <n-config-provider
         :locale="ruRU"
         :date-locale="dateRuRU"
+        :theme-overrides="theme"
     >
       <n-modal-provider>
         <n-dialog-provider>

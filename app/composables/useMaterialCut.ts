@@ -11,6 +11,12 @@ export type CutType = 'standard' | 'equal';
 
 export const useMaterialCut = () => {
 
+    const cutAll = (
+        material: Material,
+    ): CutMaterialResult | void => {
+        return cutMaterial(material, material.quantity, material.amount, 'standard');
+    };
+
     const cutOnePart = (
         material: Material,
     ): CutMaterialResult | void => {
@@ -75,6 +81,8 @@ export const useMaterialCut = () => {
 
             if (unitsNeeded < material.amount) {
                 unusedPart = material.cloneWithNewParams(material.quantity, material.amount - unitsNeeded, operationUuid, true);
+            } else {
+                unusedPart = material.cloneWithNewParams(material.quantity, 0, operationUuid, true);
             }
         } else {
             remainder = [];
@@ -115,6 +123,8 @@ export const useMaterialCut = () => {
 
         if (cutQuantity < material.amount) {
             unusedPart = material.cloneWithNewParams(material.quantity, material.amount - cutQuantity, operationUuid, true);
+        } else {
+            unusedPart = material.cloneWithNewParams(material.quantity, 0, operationUuid, true);
         }
 
         return {
@@ -372,6 +382,8 @@ export const useMaterialCut = () => {
     }
 
     return {
+        cutAll,
+        cutOnePart,
         cutMaterial,
         isValidCut,
         getMaxPossibleAmount,

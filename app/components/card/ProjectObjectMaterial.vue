@@ -14,7 +14,7 @@ const props = defineProps<{
 <template>
   <n-card title="Материалы">
     <n-tabs type="segment" animated>
-      <n-tab-pane name="active" tab="На объекте">
+      <n-tab-pane name="active" tab="На объекте" :disabled="loading">
         <TableMaterial
             :materials="activeMaterials"
             :loading
@@ -24,7 +24,7 @@ const props = defineProps<{
             :expand-groups-by-default="false"
         />
       </n-tab-pane>
-      <n-tab-pane name="reserve" tab="В резерве">
+      <n-tab-pane name="reserve" tab="В резерве" :disabled="loading">
         <TableMaterial
             :materials="reserveMaterials"
             :loading

@@ -1,0 +1,3262 @@
+[
+  {
+    "id": 5,
+    "name": "As 500-13",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0790,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 6,
+    "name": "AU 23",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1021,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 7,
+    "name": "AZ 12-770",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0726,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 8,
+    "name": "AZ 13-770",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0761,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 9,
+    "name": "AZ 14-770",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0795,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 10,
+    "name": "AZ 18-700",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0765,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 11,
+    "name": "AZ 18-800",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0807,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 12,
+    "name": "AZ 24-700N",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0897,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 13,
+    "name": "AZ 28-700",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1100,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 14,
+    "name": "AZ 36-700N",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1186,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 15,
+    "name": "AZ 48-580",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1396,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 16,
+    "name": "AZ 48-700",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1585,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 17,
+    "name": "GU 18N",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0769,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 18,
+    "name": "GU 22N",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1292,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 19,
+    "name": "GU 27N",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0974,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 20,
+    "name": "PU 22",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1292,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 21,
+    "name": "PU 28-1",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1461,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 22,
+    "name": "VL 603",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0642,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 23,
+    "name": "VL 606A",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1281,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 24,
+    "name": "Л4",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0740,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 25,
+    "name": "Л5-УМ",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1708,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 26,
+    "name": "AZ 24-700",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.0957,
+    "created_at": "2023-07-18 00:25:07",
+    "updated_at": "2023-07-18 00:25:07",
+    "deleted_at": null
+  },
+  {
+    "id": 27,
+    "name": "Л5-УМ",
+    "material_type_id": 5,
+    "description": null,
+    "weight": 0.1708,
+    "created_at": "2023-07-18 00:25:07",
+    "updated_at": "2023-07-18 00:25:07",
+    "deleted_at": "2025-06-17 21:01:16"
+  },
+  {
+    "id": 28,
+    "name": "⌀10",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0006,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 29,
+    "name": "⌀12",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0009,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 30,
+    "name": "⌀14",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0012,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 31,
+    "name": "⌀16",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0016,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 32,
+    "name": "⌀18",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0020,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 33,
+    "name": "⌀20",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0025,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 34,
+    "name": "⌀22",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0030,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 35,
+    "name": "⌀25",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0039,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 36,
+    "name": "⌀28",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0048,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 37,
+    "name": "⌀32",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0063,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 38,
+    "name": "⌀36",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0080,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 39,
+    "name": "⌀40",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0099,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 40,
+    "name": "⌀45",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0125,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 41,
+    "name": "⌀50",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0154,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 42,
+    "name": "⌀55",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0186,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 43,
+    "name": "⌀6",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0002,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 44,
+    "name": "⌀60",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0222,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 45,
+    "name": "⌀70",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0302,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 46,
+    "name": "⌀8",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0004,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 47,
+    "name": "⌀80",
+    "material_type_id": 6,
+    "description": null,
+    "weight": 0.0395,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 48,
+    "name": "10Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0081,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 49,
+    "name": "12Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0087,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 50,
+    "name": "12Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0104,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 51,
+    "name": "14Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0105,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 52,
+    "name": "14Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0129,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 53,
+    "name": "16Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0127,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 54,
+    "name": "16Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0158,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 55,
+    "name": "18Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0154,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 56,
+    "name": "18Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0188,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 57,
+    "name": "20Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0213,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 58,
+    "name": "20К1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0414,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 59,
+    "name": "20К2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0499,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 60,
+    "name": "20Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0306,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 61,
+    "name": "25Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0257,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 62,
+    "name": "25К1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0626,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 63,
+    "name": "25К2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0724,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 64,
+    "name": "25К3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0802,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 65,
+    "name": "25Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0441,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 66,
+    "name": "30Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0320,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 67,
+    "name": "30Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0367,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 68,
+    "name": "30К1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0870,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 69,
+    "name": "30К2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0940,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 70,
+    "name": "30К3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1058,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 71,
+    "name": "30К4",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1058,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 72,
+    "name": "30Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0568,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 73,
+    "name": "30Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0686,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 74,
+    "name": "30Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0829,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 75,
+    "name": "35Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0414,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 76,
+    "name": "35Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0496,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 77,
+    "name": "35К1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1091,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 78,
+    "name": "35К2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1365,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 79,
+    "name": "35Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0653,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 80,
+    "name": "35Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0797,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 81,
+    "name": "35Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0989,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 82,
+    "name": "40Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0566,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 83,
+    "name": "40Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0660,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 84,
+    "name": "40К1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1466,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 85,
+    "name": "40К2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1717,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 86,
+    "name": "40К3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2001,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 87,
+    "name": "40К4",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2319,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 88,
+    "name": "40К5",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2908,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 89,
+    "name": "40Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0886,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 90,
+    "name": "40Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1067,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 91,
+    "name": "40Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1294,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 92,
+    "name": "45Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0662,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 93,
+    "name": "45Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0760,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 94,
+    "name": "50Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0725,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 95,
+    "name": "50Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0795,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 96,
+    "name": "50Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1142,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 97,
+    "name": "50Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1384,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 98,
+    "name": "50Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1561,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 99,
+    "name": "50Ш4",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1738,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 100,
+    "name": "55Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0890,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 101,
+    "name": "55Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0979,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 102,
+    "name": "60Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0946,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 103,
+    "name": "60Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1055,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 104,
+    "name": "60Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1370,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 105,
+    "name": "60Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1707,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 106,
+    "name": "60Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1981,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 107,
+    "name": "60Ш4",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2256,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 108,
+    "name": "70Б1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1293,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 109,
+    "name": "70Б2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1467,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 110,
+    "name": "70Ш1",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.1660,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 111,
+    "name": "70Ш2",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.0104,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 112,
+    "name": "70Ш3",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2269,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 113,
+    "name": "70Ш4",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2586,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 114,
+    "name": "70Ш5",
+    "material_type_id": 7,
+    "description": null,
+    "weight": 0.2949,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 115,
+    "name": "1020x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2491,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 116,
+    "name": "1020x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2737,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 117,
+    "name": "1020x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2983,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 118,
+    "name": "1020x13",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3228,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 119,
+    "name": "1020x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3473,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 120,
+    "name": "1020x16",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3962,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 121,
+    "name": "1020x20",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.4932,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 122,
+    "name": "1020x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1997,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 123,
+    "name": "1020x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2244,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 124,
+    "name": "1120x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2737,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 125,
+    "name": "1120x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3009,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 126,
+    "name": "1120x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3279,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 127,
+    "name": "1120x13",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3549,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 128,
+    "name": "1120x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3819,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 129,
+    "name": "1120x16",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.4356,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 130,
+    "name": "1120x20",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.5426,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 131,
+    "name": "1120x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2194,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 132,
+    "name": "1120x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2466,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 133,
+    "name": "1220x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2984,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 134,
+    "name": "1220x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3280,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 135,
+    "name": "1220x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3575,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 136,
+    "name": "1220x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.4164,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 137,
+    "name": "1220x16",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.4751,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 138,
+    "name": "1220x20",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.5919,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 139,
+    "name": "127x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0284,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 140,
+    "name": "127x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0235,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 141,
+    "name": "127x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0162,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 142,
+    "name": "1420x18",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.6224,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 143,
+    "name": "1420x19",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.6565,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 144,
+    "name": "1420x20",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.6905,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 145,
+    "name": "377x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0905,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 146,
+    "name": "377x6",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0549,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 147,
+    "name": "377x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0639,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 148,
+    "name": "377x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0728,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 149,
+    "name": "377x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0817,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 150,
+    "name": "426x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1026,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 151,
+    "name": "426x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1126,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 152,
+    "name": "426x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1225,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 153,
+    "name": "426x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0723,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 154,
+    "name": "426x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0825,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 155,
+    "name": "426x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0956,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 156,
+    "name": "530x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1282,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 157,
+    "name": "530x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1408,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 158,
+    "name": "530x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1533,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 159,
+    "name": "530x6",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0775,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 160,
+    "name": "530x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.0903,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 161,
+    "name": "530x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1030,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 162,
+    "name": "530x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1156,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 163,
+    "name": "630x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1529,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 164,
+    "name": "630x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1679,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 165,
+    "name": "630x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1829,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 166,
+    "name": "630x13",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1978,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 167,
+    "name": "630x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2127,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 168,
+    "name": "630x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1056,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 169,
+    "name": "630x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1227,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 170,
+    "name": "630x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1378,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 171,
+    "name": "720x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1751,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 172,
+    "name": "720x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1923,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 173,
+    "name": "720x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2095,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 174,
+    "name": "720x13",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2267,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 175,
+    "name": "720x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2438,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 176,
+    "name": "720x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1231,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 177,
+    "name": "720x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1405,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 178,
+    "name": "720x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1578,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 179,
+    "name": "820x10",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1998,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 180,
+    "name": "820x11",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2195,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 181,
+    "name": "820x12",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2391,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 182,
+    "name": "820x13",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2587,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 183,
+    "name": "820x14",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.2783,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 184,
+    "name": "820x16",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.3173,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 185,
+    "name": "820x7",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1404,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 186,
+    "name": "820x8",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1602,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 187,
+    "name": "820x9",
+    "material_type_id": 8,
+    "description": null,
+    "weight": 0.1800,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 188,
+    "name": "10П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0086,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 189,
+    "name": "10У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0086,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 190,
+    "name": "12П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0104,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 191,
+    "name": "12У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0104,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 192,
+    "name": "14П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0123,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 193,
+    "name": "14У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0123,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 194,
+    "name": "16aП",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0153,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 195,
+    "name": "16aУ",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0153,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 196,
+    "name": "16П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0142,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 197,
+    "name": "16У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0142,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 198,
+    "name": "18aП",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0174,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 199,
+    "name": "18aУ",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0174,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 200,
+    "name": "18П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0163,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 201,
+    "name": "18У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0163,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 202,
+    "name": "20П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0184,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 203,
+    "name": "20У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0184,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 204,
+    "name": "22П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0210,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 205,
+    "name": "22У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0210,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 206,
+    "name": "24П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0240,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 207,
+    "name": "24У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0240,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 208,
+    "name": "27П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0277,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 209,
+    "name": "27У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0277,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 210,
+    "name": "30П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0318,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 211,
+    "name": "30У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0318,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 212,
+    "name": "33П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0365,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 213,
+    "name": "33У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0365,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 214,
+    "name": "36П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0419,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 215,
+    "name": "36У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0419,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 216,
+    "name": "40П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0483,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 217,
+    "name": "40У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0483,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 218,
+    "name": "5П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0048,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 219,
+    "name": "5У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0048,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 220,
+    "name": "6.5П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0059,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 221,
+    "name": "6.5У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0059,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 222,
+    "name": "8П",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0071,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 223,
+    "name": "8У",
+    "material_type_id": 9,
+    "description": null,
+    "weight": 0.0071,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 224,
+    "name": "E22",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0102,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 225,
+    "name": "LV22",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0080,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 226,
+    "name": "С9",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0093,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 227,
+    "name": "E20",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0154,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 228,
+    "name": "LV8",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0085,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 229,
+    "name": "С14",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0144,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 230,
+    "name": "DELTA 13",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0130,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 231,
+    "name": "LV20n",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0138,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 232,
+    "name": "LV-Omega",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0138,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 233,
+    "name": "Omega 18",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0180,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 234,
+    "name": "Omega 17",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0173,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 235,
+    "name": "Замок-обойма ОБ",
+    "material_type_id": 10,
+    "description": null,
+    "weight": 0.0001,
+    "created_at": "2023-07-18 00:25:07",
+    "updated_at": "2023-07-18 00:25:07",
+    "deleted_at": null
+  },
+  {
+    "id": 236,
+    "name": "40x40x3",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0034,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 237,
+    "name": "40x40x3.5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0039,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 238,
+    "name": "40x40x4",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0043,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 239,
+    "name": "40x40x5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0052,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 240,
+    "name": "40x40x6",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0059,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 241,
+    "name": "50x50x3",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0043,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 242,
+    "name": "50x50x3.5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0049,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 243,
+    "name": "50x50x4",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0056,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 244,
+    "name": "50x50x5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0067,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 245,
+    "name": "50x50x6",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0078,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 246,
+    "name": "50x50x7",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0088,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 247,
+    "name": "50x50x8",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0097,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 248,
+    "name": "60x60x3.5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0060,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 249,
+    "name": "60x60x5",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0083,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 250,
+    "name": "60x60x6",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0097,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 251,
+    "name": "60x60x7",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0110,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 252,
+    "name": "60x60x8",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0122,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 253,
+    "name": "60x60x3",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0052,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 254,
+    "name": "60x60x4",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0068,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 255,
+    "name": "70x70x3",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0061,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 256,
+    "name": "70x70x4",
+    "material_type_id": 11,
+    "description": null,
+    "weight": 0.0080,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 257,
+    "name": "12",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0942,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 258,
+    "name": "8",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0628,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 259,
+    "name": "10",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0785,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 260,
+    "name": "14",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1099,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 261,
+    "name": "16",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1256,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 262,
+    "name": "20",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1570,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 263,
+    "name": "22",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1727,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 264,
+    "name": "30",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.2355,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 265,
+    "name": "50",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.3925,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 266,
+    "name": "28",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.2198,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 267,
+    "name": "25",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1963,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 268,
+    "name": "32",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.2512,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 269,
+    "name": "100",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.7850,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 270,
+    "name": "24",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1884,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 271,
+    "name": "5",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0393,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 272,
+    "name": "6",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0471,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 273,
+    "name": "3",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.0236,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 274,
+    "name": "15",
+    "material_type_id": 14,
+    "description": null,
+    "weight": 0.1178,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 275,
+    "name": "ЗД на болтах ⌀530-630",
+    "material_type_id": 16,
+    "description": null,
+    "weight": 0.4340,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 276,
+    "name": "ЗД-1",
+    "material_type_id": 16,
+    "description": null,
+    "weight": 0.4340,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 277,
+    "name": "ЗД-2",
+    "material_type_id": 16,
+    "description": null,
+    "weight": 0.4340,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 278,
+    "name": "ЗД-3",
+    "material_type_id": 16,
+    "description": null,
+    "weight": 0.4340,
+    "created_at": "2023-07-18 00:25:06",
+    "updated_at": "2023-07-18 00:25:06",
+    "deleted_at": null
+  },
+  {
+    "id": 516,
+    "name": "Обрезки трубошпунта 045-072 3.3",
+    "material_type_id": 5,
+    "description": "Заменено на полное наименование стандарта: Обрезки трубошпунта 045-072 3.3 (было: 045-072 3.3)",
+    "weight": 0.1950,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 13:44:36",
+    "deleted_at": null
+  },
+  {
+    "id": 523,
+    "name": "Шпунт VL 605 (стыкованный)",
+    "material_type_id": 5,
+    "description": "Заменено на полное наименование стандарта: Шпунт VL 605 (стыкованный)",
+    "weight": 0.0821,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 524,
+    "name": "Шпунт VL 605A (стыкованный)",
+    "material_type_id": 5,
+    "description": "Заменено на полное наименование стандарта: Шпунт VL 605A (стыкованный)",
+    "weight": 0.0765,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 529,
+    "name": "Обрезки шпунта Л5",
+    "material_type_id": 5,
+    "description": "Заменено на полное наименование стандарта: Обрезки шпунта Л5",
+    "weight": 0.1000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 532,
+    "name": "Двутавр 60Ш1 (спаренный)",
+    "material_type_id": 7,
+    "description": "Заменено на полное наименование стандарта: Двутавр 60Ш1 (спаренный) (было: Двутавр 60Ш1 (спаренный))",
+    "weight": 0.2740,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 533,
+    "name": "Двутавр 40Ш4",
+    "material_type_id": 7,
+    "description": "Заменено на полное наименование стандарта: Двутавр 40Ш4",
+    "weight": 0.1586,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 534,
+    "name": "Двутавр 45Ш1",
+    "material_type_id": 7,
+    "description": "Заменено на полное наименование стандарта: Двутавр 45Ш1",
+    "weight": 0.1236,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 535,
+    "name": "Двутавр 60Б3",
+    "material_type_id": 7,
+    "description": "Заменено на полное наименование стандарта: Двутавр 60Б3",
+    "weight": 0.1188,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 536,
+    "name": "Двутавр 30 (ГОСТ 8239-89)",
+    "material_type_id": 7,
+    "description": "Заменено на полное наименование стандарта: Двутавр 30 (ГОСТ 8239-89)",
+    "weight": 0.0365,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 537,
+    "name": "Труба прямошовная 127x5",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 127x5",
+    "weight": 0.0150,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 538,
+    "name": "Труба прямошовная 140x5",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 140x5",
+    "weight": 0.0167,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 539,
+    "name": "Труба прямошовная 168x5",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 168x5",
+    "weight": 0.0201,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 540,
+    "name": "Труба прямошовная 219x5",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 219x5",
+    "weight": 0.0264,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 541,
+    "name": "Труба прямошовная 219x6",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 219x6",
+    "weight": 0.0315,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 542,
+    "name": "Труба прямошовная 219x8",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 219x8",
+    "weight": 0.0416,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 543,
+    "name": "Труба прямошовная 325x8",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 325x8",
+    "weight": 0.0625,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 544,
+    "name": "Труба прямошовная 60х6",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 60х6",
+    "weight": 0.0080,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 545,
+    "name": "Труба прямошовная 920х10",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 920х10",
+    "weight": 0.2244,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 546,
+    "name": "Труба прямошовная 920х12",
+    "material_type_id": 8,
+    "description": "Заменено на полное наименование стандарта: Труба прямошовная 920х12",
+    "weight": 0.2687,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 547,
+    "name": "Швеллер 31АД",
+    "material_type_id": 9,
+    "description": "Заменено на полное наименование стандарта: Швеллер 31АД",
+    "weight": 0.0235,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 548,
+    "name": "Лист г/к 11",
+    "material_type_id": 14,
+    "description": "Заменено на полное наименование стандарта: Лист г/к 11",
+    "weight": 0.0864,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 549,
+    "name": "Лист г/к 26",
+    "material_type_id": 14,
+    "description": "Заменено на полное наименование стандарта: Лист г/к 26",
+    "weight": 0.2041,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 550,
+    "name": "Труба квадратная 100х100х5",
+    "material_type_id": 11,
+    "description": "Заменено на полное наименование стандарта: Труба квадратная 100х100х5",
+    "weight": 0.0146,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 551,
+    "name": "Труба квадратная 160x160x8",
+    "material_type_id": 11,
+    "description": "Заменено на полное наименование стандарта: Труба квадратная 160x160x8",
+    "weight": 0.0365,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 552,
+    "name": "Труба квадратная 40х20х2",
+    "material_type_id": 11,
+    "description": "Заменено на полное наименование стандарта: Труба квадратная 40х20х2",
+    "weight": 0.0017,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 553,
+    "name": "Труба квадратная 60х40х3",
+    "material_type_id": 11,
+    "description": "Заменено на полное наименование стандарта: Труба квадратная 60х40х3",
+    "weight": 0.0043,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 554,
+    "name": "ЗД под срезку ⌀530-630",
+    "material_type_id": 16,
+    "description": "Заменено на полное наименование стандарта: ЗД под срезку ⌀530-630",
+    "weight": 0.4082,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 555,
+    "name": "ЗД под срезку ⌀720-820",
+    "material_type_id": 16,
+    "description": "Заменено на полное наименование стандарта: ЗД под срезку ⌀720-820",
+    "weight": 0.4860,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 556,
+    "name": "ЗД нижняя часть с арматурой",
+    "material_type_id": 16,
+    "description": "Заменено на полное наименование стандарта: ЗД нижняя часть с арматурой",
+    "weight": 0.0886,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 557,
+    "name": "Болт анкерный 1.1 М30х600 09Г2",
+    "material_type_id": 17,
+    "description": "Заменено на полное наименование стандарта: Болт анкерный 1.1 М30х600 09Г2",
+    "weight": 0.0046,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 558,
+    "name": "Болт анкерный М30x710 09Г2С",
+    "material_type_id": 17,
+    "description": "Заменено на полное наименование стандарта: Болт анкерный М30x710 09Г2С",
+    "weight": 0.0052,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 559,
+    "name": "Гайка М30 09Г2С",
+    "material_type_id": 19,
+    "description": "Заменено на полное наименование стандарта: Гайка М30 09Г2С",
+    "weight": 0.0002,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 560,
+    "name": "Уголок 100x100x10",
+    "material_type_id": 12,
+    "description": "Заменено на полное наименование стандарта: Уголок 100x100x10",
+    "weight": 0.0151,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 561,
+    "name": "Уголок 125x125x8",
+    "material_type_id": 12,
+    "description": "Заменено на полное наименование стандарта: Уголок 125x125x8",
+    "weight": 0.0155,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 562,
+    "name": "Коники шпунтовые (пара)",
+    "material_type_id": 20,
+    "description": "Заменено на полное наименование стандарта: Коники шпунтовые (пара) (было: Коники шпунтовые (пара))",
+    "weight": 1.0000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 563,
+    "name": "Кондуктор",
+    "material_type_id": 21,
+    "description": "Заменено на полное наименование стандарта: Кондуктор",
+    "weight": 1.0000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 564,
+    "name": "Бетон В22,5 М300 П4 W6 F150 (м3)",
+    "material_type_id": 15,
+    "description": "Заменено на полное наименование стандарта: Бетон В22,5 М300 П4 W6 F150 (м3) (было: Бетон В22,5 М300 П4 W6 F150 (м3))",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 565,
+    "name": "Бетон В15 F100 W4 П4",
+    "material_type_id": 15,
+    "description": "Заменено на полное наименование стандарта: Бетон В15 F100 W4 П4",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 566,
+    "name": "Бетон В25 F150 W8 П4 ПМД-10",
+    "material_type_id": 15,
+    "description": "Заменено на полное наименование стандарта: Бетон В25 F150 W8 П4 ПМД-10",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 567,
+    "name": "Бетон В25 F150 W8 П4 ПМД-15",
+    "material_type_id": 15,
+    "description": "Заменено на полное наименование стандарта: Бетон В25 F150 W8 П4 ПМД-15",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 568,
+    "name": "Бетон В25 F150 W8 П4 ПМД-5",
+    "material_type_id": 15,
+    "description": "Заменено на полное наименование стандарта: Бетон В25 F150 W8 П4 ПМД-5",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 16:28:53",
+    "updated_at": "2025-06-06 16:28:53",
+    "deleted_at": null
+  },
+  {
+    "id": 579,
+    "name": "Трубошпунт 045-072 3.3",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт 045-072 3.3",
+    "weight": 0.1950,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 580,
+    "name": "Трубошпунт S 46-102 A1.2",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S 46-102 A1.2",
+    "weight": 0.1620,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 581,
+    "name": "Трубошпунт S 97-142 A1.1",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S 97-142 A1.1",
+    "weight": 0.3555,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 582,
+    "name": "Трубошпунт S36-072 (замок 1.1А)",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S36-072 (замок 1.1А)",
+    "weight": 0.1328,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 583,
+    "name": "Трубошпунт S42-102 1.1 А",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S42-102 1.1 А",
+    "weight": 0.1925,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 584,
+    "name": "Трубошпунт S58-102 1.1 А",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S58-102 1.1 А",
+    "weight": 0.2074,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 585,
+    "name": "Трубошпунт S59-122 1.1А",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Трубошпунт S59-122 1.1А",
+    "weight": 0.2242,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 586,
+    "name": "Шпунт Л5 (спаренный)",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Шпунт Л5 (спаренный)",
+    "weight": 0.2000,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 587,
+    "name": "Шпунт Л5 (стыкованный)",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Шпунт Л5 (стыкованный)",
+    "weight": 0.1000,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 588,
+    "name": "Шпунт VL605A",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Шпунт VL605A",
+    "weight": 0.0769,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  },
+  {
+    "id": 589,
+    "name": "Шпунт ZZ 36-700N",
+    "material_type_id": 5,
+    "description": "Создано из непереброшенного стандарта: Шпунт ZZ 36-700N",
+    "weight": 0.1186,
+    "created_at": "2025-06-06 17:01:34",
+    "updated_at": "2025-06-06 17:01:34",
+    "deleted_at": null
+  }
+]

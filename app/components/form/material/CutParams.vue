@@ -7,7 +7,8 @@ import type { Material } from "~/models/Material";
 import { useMaterialCut } from "~/composables/useMaterialCut";
 
 const props = defineProps<{
-  material: Material | null
+  material: Material | null,
+  splitMode?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -128,7 +129,7 @@ defineExpose({
 <template>
   <div class="grid grid-cols-2 gap-4">
     <n-form>
-      <n-form-item label="Объем для резки">
+      <n-form-item label="Объем">
         <n-input-number
             placeholder="Укажите отделяемый объем материала"
             v-model:value="quantity"
@@ -136,6 +137,7 @@ defineExpose({
             :min="0"
             :max="maxQuantity"
             :status="isQuantityValid ? 'success' : 'error'"
+            :disabled="material?.isFixedQuantity && splitMode"
         />
       </n-form-item>
       
@@ -150,7 +152,7 @@ defineExpose({
         />
       </n-form-item>
       
-      <n-form-item label="Тип резки">
+      <n-form-item v-if="!splitMode" label="Тип резки">
         <n-select
             v-model:value="cutType"
             :options="cutTypeOptions"
@@ -174,7 +176,7 @@ defineExpose({
       <div class="min-h-[300px] max-h-[400px] overflow-y-auto">
         <transition name="fade" mode="out-in">
           <div v-if="cutResult" key="result">
-            <h4 class="font-medium mb-2">Результат резки ({{ cutTypeOptions.find(opt => opt.value === cutType)?.label }}):</h4>
+            <h4 class="font-medium mb-2">Результат {{ splitMode ? 'разделения' : 'резки' }} <span v-if="!splitMode">({{ cutTypeOptions.find(opt => opt.value === cutType)?.label }})</span>:</h4>
             <div class="space-y-3 text-sm">
               <div class="bg-green-50 p-3 rounded">
                 <p class="font-medium text-green-800">Результат:</p>
@@ -191,7 +193,7 @@ defineExpose({
               </div>
               
               <div v-if="cutResult.unusedPart && (cutResult.unusedPart.quantity > 0 || cutResult.unusedPart.amount > 0)" class="bg-blue-50 p-3 rounded">
-                <p class="font-medium text-blue-800">Неиспользованная часть:</p>
+                <p class="font-medium text-blue-800">{{ splitMode ? 'Остаток' : 'Неиспользованная часть' }}:</p>
                 <p>Объем: {{ cutResult.unusedPart.quantity.toFixed(2) }} {{ props.material?.material_standard?.material_type?.material_unit?.label }}</p>
                 <p>Количество: {{ cutResult.unusedPart.amount }} шт.</p>
               </div>

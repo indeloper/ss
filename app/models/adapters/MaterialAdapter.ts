@@ -32,7 +32,6 @@ export class MaterialAdapter {
     return apiMaterials.map(material => this.transform(material))
   }
 
-  // Новый метод: создать TransformedMaterial из стандарта
   static fromStandard(standard: MaterialStandard): TransformedMaterial {
     return {
       id: 0, // или null, если допускается

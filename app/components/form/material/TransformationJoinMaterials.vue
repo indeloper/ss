@@ -1,275 +1,99 @@
 <script
-    setup
     lang="ts"
+    setup
 >
-import type {MaterialCollection} from "~/models/collections/MaterialCollection";
-import {useMaterialTransformationStore} from "~/stores/materialTransformation";
 import type {Material} from "~/models/Material";
-import {useMaterialCut} from "~/composables/useMaterialCut";
-import {useMaterialTransformation} from "~/composables/useMaterialTransformation";
-import {useDialog} from 'naive-ui';
-import {MaterialStandardCollection} from "~/models/collections/MaterialStandardCollection";
-
-const message = useMessage()
+import type {MaterialCollection} from "~/models/collections/MaterialCollection";
+import type {CutParams} from "~/composables/useMaterialTransformation";
+import {AngleRight} from '@vicons/fa'
 
 const props = defineProps<{
-  materials: MaterialCollection
+  materials: MaterialCollection,
 }>()
 
 const materialTransformationStore = useMaterialTransformationStore()
-const materialsLibraryStore = useMaterialLibraryStore()
 
-const {standards} = storeToRefs(materialsLibraryStore)
-const {materials: resultMaterials} = storeToRefs(materialTransformationStore)
-const {undoCutOperation, restoreMaterial} = useMaterialCut()
-const {processCutResult, findMaterialsWithOperationUuid} = useMaterialTransformation()
-const dialog = useDialog()
+const {
+  filteredMaterials,
+  cutMaterialOnePart,
+  cutMaterialFull,
+  cutMaterialWithParams
+} = useMaterialTransformation(
+    props.materials,
+    materialTransformationStore.materials
+)
 
-const showSourceMaterialCutModal = ref<boolean>(false)
-const showResultMaterialCutModal = ref<boolean>(false)
-const showMaterialStandardChangeModal = ref<boolean>(false)
+const selectedSourceMaterial = ref<Material | null>(null)
+const showSourceMaterialSplitModal = ref<boolean>(false)
 
-const selectedSourceMaterialUuid = ref<string | null>(null)
-const selectedResultMaterialUuid = ref<string | null>(null)
-const alternativeMaterialStandards = ref<MaterialStandardCollection>(new MaterialStandardCollection())
-const changeableMaterial = ref<Material | null>(null)
-
-const selectedSourceMaterial = computed(() => {
-  if (selectedSourceMaterialUuid.value === null) return null
-
-  return props.materials.findByUuid(selectedSourceMaterialUuid.value)
-})
-
-const selectedResultMaterial = computed(() => {
-  if (selectedResultMaterialUuid.value === null) return null
-
-  return resultMaterials.value.findByUuid(selectedResultMaterialUuid.value)
-})
-
-const handleSourceMaterialClick = (uuid: string) => {
-  selectedSourceMaterialUuid.value = uuid
-  showSourceMaterialCutModal.value = true
+const openSourceMaterialSplitModal = (material: Material) => {
+  selectedSourceMaterial.value = material
+  showSourceMaterialSplitModal.value = true
 }
 
-const handleResultMaterialClick = (uuid: string) => {
-  selectedResultMaterialUuid.value = uuid
-  showResultMaterialCutModal.value = true
-  console.log(selectedResultMaterial.value)
+const handleSourceMaterialDoubleClick = (uuid: string) => {
+  const material = props.materials.findByUuidOrFail(uuid)
+  cutMaterialOnePart(material, props.materials, materialTransformationStore.materials)
 }
 
-const handleSourceCutConfirmed = (result: {
-  material: any,
-  cutParams: {
-    quantity: number,
-    amount: number,
-    cutType: 'standard' | 'equal'
-  },
-  cutResult: {
-    result: any,
-    remainder: any[],
-    unusedPart: any | null
-  }
-}) => {
-  processCutResult(result, props.materials, resultMaterials.value)
+const handleSourceMaterialCutConfirmed = (params: CutParams) => {
+  if (!selectedSourceMaterial.value) return
+  cutMaterialWithParams(selectedSourceMaterial.value, params, props.materials, materialTransformationStore.materials)
 }
 
-const handleResultCutConfirmed = (result: {
-  material: any,
-  cutParams: {
-    quantity: number,
-    amount: number,
-    cutType: 'standard' | 'equal'
-  },
-  cutResult: {
-    result: any,
-    remainder: any[],
-    unusedPart: any | null
-  }
-}) => {
-  processCutResult(result, resultMaterials.value, resultMaterials.value, false)
+const handleDropToSelectedMaterials = (event: DragEvent) => {
+  const materialUuid = event.dataTransfer?.getData('text/plain')
+  if (!materialUuid) return
+
+  const material = props.materials.findByUuidOrFail(materialUuid)
+  if (!material) return
+
+  cutMaterialFull(material, props.materials, materialTransformationStore.materials)
 }
-
-const handleDeleteResultMaterial = (material: Material) => {
-  // Проверяем количество отделенных частей
-  if (!material.cut_operation_uuid) {
-    undoCutOperation(material, props.materials, resultMaterials.value)
-    return
-  }
-
-  const allCutResults = findMaterialsWithOperationUuid(
-      material.cut_operation_uuid,
-      props.materials,
-      resultMaterials.value
-  )
-
-  if (allCutResults.length > 1) {
-    dialog.warning({
-      title: 'Подтверждение удаления',
-      content: `Будет удалено ${allCutResults.length} материалов из этой операции резки. Продолжить?`,
-      positiveText: 'Да, удалить',
-      negativeText: 'Отмена',
-      onPositiveClick: () => {
-        undoCutOperation(material, props.materials, resultMaterials.value)
-      }
-    })
-  } else {
-    undoCutOperation(material, props.materials, resultMaterials.value)
-  }
-}
-
-const handleResultMaterialChange = (material: Material) => {
-
-  if (standards.value?.isEmpty()) return
-
-  const opposites = standards.value.filterJoinOpposite(material.material_standard.id)
-
-  if (opposites.isEmpty()) {
-    message.error('Варианты для замены не найдены')
-    return
-  } else {
-    showMaterialStandardChangeModal.value = true
-    changeableMaterial.value = material
-    alternativeMaterialStandards.value = standards.value.filterJoinOpposite(material.material_standard.id)
-  }
-}
-
-const handleChangeMaterialStandard = (uuid: string) => {
-
-  const materialStandard = standards.value?.findByUuid(uuid)
-
-  if (!materialStandard) return
-
-  changeableMaterial.value?.changeMaterialStandard(materialStandard)
-
-  showMaterialStandardChangeModal.value = false
-}
-
-const handleRestoreMaterial = (material: Material) => {
-  const derivedMaterials = resultMaterials.value.filterCutFormMaterial(material)
-
-  if (derivedMaterials.length > 1) {
-    dialog.warning({
-      title: 'Подтверждение восстановления',
-      content: `Будет удалено ${derivedMaterials.length} отделенных частей и восстановлен оригинальный материал. Продолжить?`,
-      positiveText: 'Да, восстановить',
-      negativeText: 'Отмена',
-      onPositiveClick: () => {
-        restoreMaterial(material, props.materials, resultMaterials.value)
-      }
-    })
-  } else {
-    restoreMaterial(material, props.materials, resultMaterials.value)
-  }
-}
-
-const contextMenuOptions = computed(() => [
-  {
-    label: 'Резать материал',
-    key: 'cut',
-    action: (material: any) => {
-      selectedSourceMaterialUuid.value = material.uuid
-      showSourceMaterialCutModal.value = true
-    }
-  },
-  {
-    label: 'Восстановить',
-    key: 'restore',
-    disabled: (material: any) => !material.isChanged,
-    action: (material: any) => {
-      handleRestoreMaterial(material)
-    }
-  }
-])
 
 </script>
 
 <template>
   <div class="flex flex-col h-full">
     <div class="grid grid-cols-3 gap-4 flex-1 min-h-0">
-      <div class="flex flex-col overflow-hidden">
-        <div class="flex-shrink-0 mb-2">
-          <p class="font-medium">Выберите материал</p>
-        </div>
+      <ui-card title="Доступные материалы">
         <ListMaterial
-            :materials="materials"
-            :context-menu-options="contextMenuOptions"
-            @item-click="handleSourceMaterialClick"
-            enable-context-menu
-            class="flex-1 overflow-hidden"
-        />
-      </div>
-      <div class="flex flex-col overflow-hidden">
-        <div class="flex-shrink-0 mb-2">
-          <p class="font-medium">Выбранные материалы</p>
-        </div>
-        <ListMaterial
-            :materials="materials"
-            :context-menu-options="contextMenuOptions"
-            @item-click="handleSourceMaterialClick"
-            enable-context-menu
-            class="flex-1 overflow-hidden"
-        />
-      </div>
-      <div class="flex flex-col overflow-hidden">
-        <div class="flex-shrink-0 mb-2">
-          <p class="font-medium">Результат</p>
-        </div>
-        <ListMaterial
-            :materials="materials"
-            :context-menu-options="contextMenuOptions"
-            @item-click="handleSourceMaterialClick"
-            enable-context-menu
-            class="flex-1 overflow-hidden"
-        />
-      </div>
-<!--      <div class="col-span-2 flex flex-col overflow-hidden">-->
-<!--        <div class="flex-shrink-0 mb-2">-->
-<!--          <p class="font-medium">Результат резки</p>-->
-<!--        </div>-->
-<!--        <div class="flex-1 overflow-hidden">-->
-<!--          <TableMaterial-->
-<!--              enable-search-->
-<!--              :materials="resultMaterials"-->
-<!--              enable-delete-->
-<!--              @delete:material="handleDeleteResultMaterial"-->
-<!--              enable-changing-->
-<!--              @change:material="handleResultMaterialChange"-->
-<!--              @row:click="handleResultMaterialClick"-->
-<!--              class="h-full"-->
-<!--          />-->
-<!--        </div>-->
-<!--      </div>-->
+            :materials="filteredMaterials"
+            :item-disabled="item => item.isZeroed"
+            @item-double-click="handleSourceMaterialDoubleClick"
+            @drag-start="(event, uuid) => event.dataTransfer?.setData('text/plain', uuid)"
+            enable-draggable
+        >
+          <template #item-action="{item}">
+            <n-button
+                quaternary
+                @click.stop="openSourceMaterialSplitModal(item)"
+            >
+              <n-icon>
+                <AngleRight/>
+              </n-icon>
+            </n-button>
+          </template>
+        </ListMaterial>
+      </ui-card>
+      <ui-card
+          title="Выбранные материалы"
+          enable-drop
+          @drop="handleDropToSelectedMaterials"
+      >
+        <ListMaterial :materials="materialTransformationStore.materials">
+        </ListMaterial>
+      </ui-card>
+      <ui-card title="Результат"></ui-card>
     </div>
   </div>
 
   <ModalMaterialCut
-      v-model:show="showSourceMaterialCutModal"
+      v-model:show="showSourceMaterialSplitModal"
       :material="selectedSourceMaterial"
-      @cut-confirmed="handleSourceCutConfirmed"
+      split-mode
+      v-if="selectedSourceMaterial"
+      @cut-confirmed="handleSourceMaterialCutConfirmed"
   />
 
-  <ModalMaterialCut
-      v-model:show="showResultMaterialCutModal"
-      :material="selectedResultMaterial"
-      @cut-confirmed="handleResultCutConfirmed"
-  />
-
-  <n-modal
-      v-model:show="showMaterialStandardChangeModal"
-      class="max-w-[30vw]"
-  >
-    <n-card
-        title="Выберите вариант замены материала"
-        class="min-h-[30vh]"
-    >
-      <ListMaterialStandard
-          :material-standards="alternativeMaterialStandards"
-          @item-click="handleChangeMaterialStandard"
-      />
-    </n-card>
-  </n-modal>
 </template>
-
-<style scoped>
-
-</style>

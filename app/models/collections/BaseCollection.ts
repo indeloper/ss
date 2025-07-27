@@ -15,6 +15,23 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
     this.items.push(item)
   }
 
+  addAfter(uuid: string, items: T | T[]): void {
+    const targetIndex = this.items.findIndex(item => item.getUuid() === uuid)
+    if (targetIndex === -1) {
+      throw new Error(`Item with UUID "${uuid}" not found in collection`)
+    }
+    
+    const itemsToAdd = Array.isArray(items) ? items : [items]
+    this.items.splice(targetIndex + 1, 0, ...itemsToAdd)
+  }
+
+  remove(item: T): void {
+    const index = this.items.indexOf(item)
+    if (index !== -1) {
+      this.items.splice(index, 1)
+    }
+  }
+
   getAll(): T[] {
     return this.items
   }
@@ -25,6 +42,14 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
 
   findByUuid(uuid: string): T | undefined {
     return _.find(this.items, item => item.getUuid() === uuid)
+  }
+
+  findByUuidOrFail(uuid: string): T {
+    const item = this.findByUuid(uuid)
+    if (!item) {
+      throw new Error(`Item with UUID "${uuid}" not found in collection`)
+    }
+    return item
   }
 
   getFirst(): T | undefined {
@@ -134,5 +159,18 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
     )
 
     return new (this.constructor as any)(candidates)
+  }
+
+  /**
+   * Условно выполняет операцию над коллекцией
+   * @param condition - условие для выполнения операции
+   * @param callback - функция, которая получает коллекцию и возвращает модифицированную коллекцию
+   * @returns исходная коллекция если условие false, или результат callback если true
+   */
+  when<R extends this>(condition: boolean, callback: (collection: this) => R): this | R {
+    if (condition) {
+      return callback(this)
+    }
+    return this
   }
 }

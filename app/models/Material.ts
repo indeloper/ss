@@ -20,6 +20,7 @@ export class Material extends BaseModel {
   public material_standard: MaterialStandard
   public cut_from?: string
   public cut_operation_uuid?: string
+  public join_to?: string
 
   constructor(data: TransformedMaterial) {
     super(data)
@@ -216,6 +217,14 @@ export class Material extends BaseModel {
     return this.quantity !== this.initial_quantity || this.amount !== this.initial_amount
   }
 
+  get isZeroed(): boolean {
+    return this.quantity === 0 || this.amount === 0
+  }
+
+  get isLastUnit(): boolean {
+    return this.amount === 0
+  }
+
   /**
    * Заменяет материальный стандарт у текущего материала
    * @param materialStandard - новый стандарт материала
@@ -224,4 +233,6 @@ export class Material extends BaseModel {
     this.material_standard = materialStandard
     this.old_material_standard_id = this.material_standard.id
   }
+
+
 }

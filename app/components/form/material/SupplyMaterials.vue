@@ -67,6 +67,7 @@ defineExpose({
             :material-standards="standards"
             @item-click="handleMaterialStandardRowClick"
             class="flex-1 overflow-hidden"
+            enable-search
         />
       </div>
 
