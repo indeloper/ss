@@ -4,28 +4,29 @@ import { storeToRefs } from 'pinia'
 import { NDataTable, type DataTableColumns, NButton, NIcon } from 'naive-ui'
 import { MaterialType } from '~/models/MaterialType'
 import { computed, ref } from 'vue'
-import { Edit, Plus } from '@vicons/fa'
+import { Edit } from '@vicons/fa'
 import FormMaterialTypeEdit from '~/components/form/material/MaterialTypeEdit.vue'
 
 const materialLibraryStore = useMaterialLibraryStore()
 const { types, units, properties } = storeToRefs(materialLibraryStore)
 
-// Модальное окно редактирования/создания
 const showEditModal = ref(false)
 const showCreateModal = ref(false)
 const selectedMaterialType = ref<MaterialType | null>(null)
 
-// Обработчик открытия модального окна редактирования
 const handleEdit = (materialType: MaterialType) => {
   selectedMaterialType.value = materialType
   showEditModal.value = true
 }
 
-// Обработчик открытия модального окна создания
 const handleCreate = () => {
   selectedMaterialType.value = null
   showCreateModal.value = true
 }
+
+defineExpose({
+  handleCreate
+})
 
 const columns: DataTableColumns<MaterialType> = [
   {
@@ -86,46 +87,20 @@ const columns: DataTableColumns<MaterialType> = [
   }
 ]
 
-// Получаем данные для таблицы
 const tableData = computed(() => {
   return types.value?.getAll() || []
 })
-
-onBeforeMount(() => {
-  materialLibraryStore.loadAll()
-})
-
-// Обработчик сохранения изменений
-const handleSaved = () => {
-  // После сохранения можно добавить дополнительную логику, если нужно
-}
-
-// Обработчик создания нового типа
-const handleCreated = () => {
-  // После создания можно добавить дополнительную логику, если нужно
-}
 </script>
 
 <template>
-  <ui-card title="Типы материалов">
-    <template #actions>
-      <n-button type="primary" @click="handleCreate">
-        <template #icon>
-          <n-icon><Plus /></n-icon>
-        </template>
-        Добавить
-      </n-button>
-    </template>
-    
-    <n-data-table
-        :columns="columns"
-        :data="tableData"
-        :bordered="true"
-        :single-line="false"
-        class="w-full"
-        size="small"
-    />
-  </ui-card>
+  <n-data-table
+      :columns="columns"
+      :data="tableData"
+      :bordered="true"
+      :single-line="false"
+      class="w-full"
+      size="small"
+  />
   
   <!-- Модальное окно редактирования -->
   <FormMaterialTypeEdit 

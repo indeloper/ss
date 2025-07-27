@@ -126,6 +126,18 @@ export const useMaterialLibraryApi = () => {
         return response.data
     }
 
+    const createMaterialBrandOnServer = async (data: any) => {
+        const api = useApi()
+        const response = await api.post('/library/materials/brands', data)
+        return response.data
+    }
+
+    const updateMaterialBrandOnServer = async (id: number, data: any) => {
+        const api = useApi()
+        const response = await api.put(`/library/materials/brands/${id}`, data)
+        return response.data
+    }
+
     const createMaterialPropertyOnServer = async (data: any) => {
         const api = useApi()
         const response = await api.post('/library/materials/properties', data)
@@ -138,6 +150,18 @@ export const useMaterialLibraryApi = () => {
         return response.data
     }
 
+    const createMaterialStandardOnServer = async (data: any) => {
+        const api = useApi()
+        const response = await api.post('/library/materials/standards', data)
+        return response.data
+    }
+
+    const updateMaterialStandardOnServer = async (id: number, data: any) => {
+        const api = useApi()
+        const response = await api.put(`/library/materials/standards/${id}`, data)
+        return response.data
+    }
+
     return {
         fetchMaterialStandardsFromServer,
         fetchMaterialTypesFromServer,
@@ -146,7 +170,11 @@ export const useMaterialLibraryApi = () => {
         fetchMaterialPropertiesFromServer,
         createMaterialTypeOnServer,
         updateMaterialTypeOnServer,
+        createMaterialBrandOnServer,
+        updateMaterialBrandOnServer,
         createMaterialPropertyOnServer,
-        updateMaterialPropertyOnServer
+        updateMaterialPropertyOnServer,
+        createMaterialStandardOnServer,
+        updateMaterialStandardOnServer
     }
 }

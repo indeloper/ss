@@ -1,12 +1,8 @@
-<script
-    setup
-    lang="ts"
->
+<script setup lang="ts">
 import { useMaterialLibraryStore } from '~/stores/materialLibrary'
 import { storeToRefs } from 'pinia'
-import { onMounted, ref } from 'vue'
-import { NButton, NIcon } from 'naive-ui'
-import { Plus } from '@vicons/fa'
+import { onMounted } from 'vue'
+import TableMaterialStandard from '~/components/table/MaterialStandard.vue'
 
 definePageMeta({
   layout: 'authenticated',
@@ -14,26 +10,21 @@ definePageMeta({
 })
 
 const materialLibraryStore = useMaterialLibraryStore()
-const { types } = storeToRefs(materialLibraryStore)
-
-const tableRef = ref()
+const { standards } = storeToRefs(materialLibraryStore)
 
 onMounted(() => {
   // Загрузить данные, если они еще не загружены
-  if (!types.value) {
+  if (!standards.value) {
     materialLibraryStore.loadAll()
   }
 })
-
-const handleCreate = () => {
-  tableRef.value?.handleCreate()
-}
 </script>
 
 <template>
-  <ui-card title="Типы материалов" class="w-full">
-    <TableMaterialType :types />
+  <ui-card title="Стандарты материалов" class="w-full">
+    <TableMaterialStandard :standards/>
   </ui-card>
+
 </template>
 
 <style scoped>

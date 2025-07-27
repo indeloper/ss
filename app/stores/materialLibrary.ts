@@ -22,7 +22,7 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
     fetchAllMaterialTypesLibrary,
     fetchAllMaterialBrandsLibrary,
     fetchAllMaterialUnitsLibrary,
-    fetchAllMaterialPropertiesLibrary
+    fetchAllMaterialPropertiesLibrary,
   } = useMaterialLibrary()
 
   
@@ -58,8 +58,10 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
     try {
       const { createMaterialType: createMaterialTypeInLibrary } = useMaterialLibrary()
       const newType = await createMaterialTypeInLibrary(data)
-      // Добавляем новый тип в коллекцию
+      
+      // Обновляем коллекцию типов
       if (types.value) {
+        const { fetchAllMaterialTypesLibrary } = useMaterialLibrary()
         types.value = await fetchAllMaterialTypesLibrary({forceRefresh: true})
       }
       return newType
@@ -77,6 +79,7 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
       
       // Обновляем тип в коллекции
       if (types.value) {
+        const { fetchAllMaterialTypesLibrary } = useMaterialLibrary()
         types.value = await fetchAllMaterialTypesLibrary({forceRefresh: true})
       }
       return updatedType
@@ -87,10 +90,47 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
     }
   }
   
+  const createMaterialBrand = async (data: any) => {
+    try {
+      const { createMaterialBrand: createMaterialBrandInLibrary } = useMaterialLibrary()
+      const newBrand = await createMaterialBrandInLibrary(data)
+      
+      // Обновляем коллекцию брендов
+      if (brands.value) {
+        const { fetchAllMaterialBrandsLibrary } = useMaterialLibrary()
+        brands.value = await fetchAllMaterialBrandsLibrary({forceRefresh: true})
+      }
+      return newBrand
+    } catch (err) {
+      error.value = 'Ошибка при создании бренда материала'
+      console.error('Error creating material brand:', err)
+      throw err
+    }
+  }
+  
+  const updateMaterialBrand = async (id: number, data: any) => {
+    try {
+      const { updateMaterialBrand: updateMaterialBrandInLibrary } = useMaterialLibrary()
+      const updatedBrand = await updateMaterialBrandInLibrary(id, data)
+      
+      // Обновляем бренд в коллекции
+      if (brands.value) {
+        const { fetchAllMaterialBrandsLibrary } = useMaterialLibrary()
+        brands.value = await fetchAllMaterialBrandsLibrary({forceRefresh: true})
+      }
+      return updatedBrand
+    } catch (err) {
+      error.value = 'Ошибка при обновлении бренда материала'
+      console.error('Error updating material brand:', err)
+      throw err
+    }
+  }
+  
   const createMaterialProperty = async (data: any) => {
     try {
       const { createMaterialProperty: createMaterialPropertyInLibrary } = useMaterialLibrary()
       const newProperty = await createMaterialPropertyInLibrary(data)
+      
       // Обновляем коллекцию свойств
       if (properties.value) {
         const { fetchAllMaterialPropertiesLibrary } = useMaterialLibrary()
@@ -121,6 +161,42 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
       throw err
     }
   }
+
+  const createMaterialStandard = async (data: any) => {
+    try {
+      const { createMaterialStandard: createMaterialStandardInLibrary } = useMaterialLibrary()
+      const newStandard = await createMaterialStandardInLibrary(data)
+      
+      // Обновляем стандарты в коллекции
+      if (standards.value) {
+        const { fetchAllMaterialStandardsLibrary } = useMaterialLibrary()
+        standards.value = await fetchAllMaterialStandardsLibrary({forceRefresh: true})
+      }
+      return newStandard
+    } catch (err) {
+      error.value = 'Ошибка при создании стандарта материала'
+      console.error('Error creating material standard:', err)
+      throw err
+    }
+  }
+
+  const updateMaterialStandard = async (id: number, data: any) => {
+    try {
+      const { updateMaterialStandard: updateMaterialStandardInLibrary } = useMaterialLibrary()
+      const updatedStandard = await updateMaterialStandardInLibrary(id, data)
+      
+      // Обновляем стандарт в коллекции
+      if (standards.value) {
+        const { fetchAllMaterialStandardsLibrary } = useMaterialLibrary()
+        standards.value = await fetchAllMaterialStandardsLibrary({forceRefresh: true})
+      }
+      return updatedStandard
+    } catch (err) {
+      error.value = 'Ошибка при обновлении стандарта материала'
+      console.error('Error updating material standard:', err)
+      throw err
+    }
+  }
   
   return {
     // State
@@ -136,7 +212,11 @@ export const useMaterialLibraryStore = defineStore('materialLibrary', () => {
     loadAll,
     createMaterialType,
     updateMaterialType,
+    createMaterialBrand,
+    updateMaterialBrand,
     createMaterialProperty,
-    updateMaterialProperty
+    updateMaterialProperty,
+    createMaterialStandard,
+    updateMaterialStandard
   }
 })

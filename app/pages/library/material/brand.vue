@@ -11,12 +11,12 @@ definePageMeta({
 })
 
 const materialLibraryStore = useMaterialLibraryStore()
-const { properties } = storeToRefs(materialLibraryStore)
+const { brands } = storeToRefs(materialLibraryStore)
 
 const tableRef = ref()
 
 onMounted(() => {
-  if (!properties.value) {
+  if (!brands.value) {
     materialLibraryStore.loadAll()
   }
 })
@@ -27,8 +27,8 @@ const handleCreate = () => {
 </script>
 
 <template>
-  <ui-card title="Свойства материалов" class="w-full">  
-    <TableMaterialProperty :properties />
+  <ui-card title="Бренды материалов" class="w-full">
+    <TableMaterialBrand :brands/>
   </ui-card>
 </template>
 

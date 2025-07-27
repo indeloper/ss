@@ -51,6 +51,14 @@ const menuOptions: MenuOption[] = [
             label: 'Свойства материалов',
             key: '/library/material/property',
           },
+          {
+            label: 'Бренды материалов',
+            key: '/library/material/brand',
+          },
+          {
+            label: 'Стандарты материалов',
+            key: '/library/material/standard',
+          },
         ]
       },
     ]

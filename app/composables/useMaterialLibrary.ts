@@ -20,8 +20,12 @@ export const useMaterialLibrary = () => {
         fetchMaterialPropertiesFromServer,
         createMaterialTypeOnServer,
         updateMaterialTypeOnServer,
+        createMaterialBrandOnServer,
+        updateMaterialBrandOnServer,
         createMaterialPropertyOnServer,
-        updateMaterialPropertyOnServer
+        updateMaterialPropertyOnServer,
+        createMaterialStandardOnServer,
+        updateMaterialStandardOnServer
     } = useMaterialLibraryApi()
 
     const fetchAllMaterialStandardsLibrary = async (options: ApiOptions = {}) => {
@@ -59,6 +63,16 @@ export const useMaterialLibrary = () => {
         // return fetchAllMaterialTypesLibrary({forceRefresh: true})
     }
 
+    const createMaterialBrand = async (data: any) => {
+        const response = await createMaterialBrandOnServer(data)
+        // return fetchAllMaterialBrandsLibrary({forceRefresh: true})
+    }
+
+    const updateMaterialBrand = async (id: number, data: any) => {
+        const response = await updateMaterialBrandOnServer(id, data)
+        // return fetchAllMaterialBrandsLibrary({forceRefresh: true})
+    }
+
     const createMaterialProperty = async (data: any) => {
         const response = await createMaterialPropertyOnServer(data)
         // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
@@ -69,6 +83,16 @@ export const useMaterialLibrary = () => {
         // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
     }
 
+    const createMaterialStandard = async (data: any) => {
+        const response = await createMaterialStandardOnServer(data)
+        // return fetchAllMaterialStandardsLibrary({forceRefresh: true})
+    }
+
+    const updateMaterialStandard = async (id: number, data: any) => {
+        const response = await updateMaterialStandardOnServer(id, data)
+        // return fetchAllMaterialStandardsLibrary({forceRefresh: true})
+    }
+
     return {
         fetchAllMaterialStandardsLibrary,
         fetchAllMaterialTypesLibrary,
@@ -77,7 +101,11 @@ export const useMaterialLibrary = () => {
         fetchAllMaterialPropertiesLibrary,
         createMaterialType,
         updateMaterialType,
+        createMaterialBrand,
+        updateMaterialBrand,
         createMaterialProperty,
-        updateMaterialProperty
+        updateMaterialProperty,
+        createMaterialStandard,
+        updateMaterialStandard
     }
 }
