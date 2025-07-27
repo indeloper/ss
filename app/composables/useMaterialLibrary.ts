@@ -19,7 +19,9 @@ export const useMaterialLibrary = () => {
         fetchMaterialUnitsFromServer,
         fetchMaterialPropertiesFromServer,
         createMaterialTypeOnServer,
-        updateMaterialTypeOnServer
+        updateMaterialTypeOnServer,
+        createMaterialPropertyOnServer,
+        updateMaterialPropertyOnServer
     } = useMaterialLibraryApi()
 
     const fetchAllMaterialStandardsLibrary = async (options: ApiOptions = {}) => {
@@ -57,6 +59,16 @@ export const useMaterialLibrary = () => {
         // return fetchAllMaterialTypesLibrary({forceRefresh: true})
     }
 
+    const createMaterialProperty = async (data: any) => {
+        const response = await createMaterialPropertyOnServer(data)
+        // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
+    }
+
+    const updateMaterialProperty = async (id: number, data: any) => {
+        const response = await updateMaterialPropertyOnServer(id, data)
+        // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
+    }
+
     return {
         fetchAllMaterialStandardsLibrary,
         fetchAllMaterialTypesLibrary,
@@ -64,6 +76,8 @@ export const useMaterialLibrary = () => {
         fetchAllMaterialUnitsLibrary,
         fetchAllMaterialPropertiesLibrary,
         createMaterialType,
-        updateMaterialType
+        updateMaterialType,
+        createMaterialProperty,
+        updateMaterialProperty
     }
 }
