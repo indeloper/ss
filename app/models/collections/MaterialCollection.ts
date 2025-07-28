@@ -4,6 +4,9 @@ import type {TransformedMaterial} from '../interfaces'
 import type {MaterialStandard} from "~/models/MaterialStandard";
 import {MaterialTypes} from '~/enumerates/MaterialTypes'
 import {useMaterialCollectionFilter} from "~/models/filters/useMaterialCollectionFilter";
+import _ from 'lodash'
+import {MaterialProperties} from "~/enumerates/MaterialProperties";
+import {JOIN_TRANSFORMATION_CONFIG} from "~/configurations/transformation/JoinTransformationConfig";
 
 export class MaterialCollection extends BaseCollection<Material> {
 
@@ -19,14 +22,274 @@ export class MaterialCollection extends BaseCollection<Material> {
         }
     }
 
-    /**
-     * Создает коллекцию из готовых объектов Material
-     */
     static fromMaterials(materials: Material[]): MaterialCollection {
         const collection = new MaterialCollection([])
         collection.items = materials
         return collection
     }
+
+    //Подбор материала по типу
+    filterPiles(): this {
+        return this.filterByMaterialTypeIds([MaterialTypes.PILE])
+    }
+
+    filterAngularElements(): this {
+        return this.filterByMaterialTypeIds([MaterialTypes.ANGULAR_ELEMENT])
+    }
+
+    //Подбор материала под операцию изготовления
+    filterAvailableForCut(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.PILE,
+                MaterialTypes.ANGULAR_ELEMENT,
+                MaterialTypes.SQUARE_PIPE,
+            ])
+            .filterByMaterialPropertiesIds([
+                MaterialProperties.JOINED,
+            ], {
+                allowEmpty: true,
+                strict: true
+            })
+    }
+
+    /**
+     * Подбор материала под операцию стыковки по длине
+     * @param targetMaterialUuid - uuid материала, к которому подбирается материалы для стыковки
+     */
+    filterAvailableForJoin(targetMaterialUuid?: string): this {
+        return this
+            .when(targetMaterialUuid === undefined, (materialsCollection) => {
+                return materialsCollection
+                    .filterByMaterialTypeIds(JOIN_TRANSFORMATION_CONFIG.allowedMaterialTypesIds)
+                    .filterByMaterialPropertiesIds(JOIN_TRANSFORMATION_CONFIG.allowedMaterialPropertiesIds, {
+                        allowEmpty: true,
+                        strict: true
+                    })
+            })
+            .when(targetMaterialUuid !== undefined, (materialsCollection) => {
+                return materialsCollection
+                    .filterBySameBrands(targetMaterialUuid)
+            })
+    }
+
+    filterAvailableForAngle(targetMaterialUuid?: string, targetAngularMaterialUuid?: string): this {
+
+        return this
+            .when(targetMaterialUuid === undefined && targetAngularMaterialUuid === undefined, (materialsCollection) => {
+                return materialsCollection
+                    .filterPiles()
+                    .filterByMaterialPropertiesIds([MaterialProperties.JOINED], {allowEmpty: true, strict: true})
+            })
+            .when(targetMaterialUuid !== undefined && targetAngularMaterialUuid === undefined, (materialsCollection) => {
+
+                const targetMaterial = materialsCollection.findByUuid(targetMaterialUuid)
+
+                return materialsCollection.or(
+                    (material) => material.hasSameBrands(targetMaterial) && material.isPile,
+                    (material) => material.isAngularElement
+                )
+            })
+            .when(targetMaterialUuid !== undefined && targetAngularMaterialUuid !== undefined, (materialsCollection) => {
+                const targetMaterial = materialsCollection.findByUuid(targetMaterialUuid)
+                const targetAngularMaterial = materialsCollection.findByUuid(targetAngularMaterialUuid)
+
+                return materialsCollection.or(
+                    (material) => material.hasSameBrands(targetMaterial) && material.isPile,
+                    (material) => material.hasSameBrands(targetAngularMaterial) && material.isAngularElement
+                )
+            })
+    }
+
+    filterAvailableForWedge(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.PILE,
+                MaterialTypes.HOT_ROLLED_SHEET,
+            ])
+            .filterByMaterialPropertiesIds([
+                MaterialProperties.JOINED,
+            ], {
+                allowEmpty: true,
+                strict: true
+            })
+    }
+
+    filterAvailableForBeam(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+            .filterByExcludedMaterialPropertiesIds([
+                MaterialProperties.PAIRED,
+            ])
+    }
+
+    filterAvailableForEmbed(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+    }
+
+    filterAvailableForSupport(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+            .filterByExcludedMaterialPropertiesIds([
+                MaterialProperties.PAIRED,
+            ])
+    }
+
+    filterAvailableForKernel(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+    }
+
+    filterAvailableForMsb(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+    }
+
+    filterAvailableForAngleSplit(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.PILE,
+            ])
+            .filterByMaterialPropertiesIds([
+                MaterialProperties.ANGULAR,
+                MaterialProperties.WITH_LOCK
+            ], {
+                strict: true
+            })
+    }
+
+    filterAvailableForBeamSplit(): this {
+        return this
+            .filterByMaterialTypeIds([
+                MaterialTypes.I_BEAM,
+            ])
+            .filterByMaterialPropertiesIds([
+                MaterialProperties.PAIRED,
+            ])
+    }
+
+    //фильтры по связям
+    filterByMaterialTypeIds(typeIds: number[]): this {
+        return this
+            .filterBy((material) =>
+                typeIds.includes(material.material_standard?.material_type?.getId())
+            )
+    }
+
+    filterByMaterialBrandsIds(
+        brandIds: number[],
+        params: { strict?: boolean } = {strict: false}
+    ): this {
+        const {strict} = params;
+
+        return this
+            .filterBy((material) => {
+                const materialBrandsIds = material.material_standard?.material_brands?.pluck('id') || [];
+                const intersection = _.intersection(materialBrandsIds, brandIds);
+                if (strict) return intersection.length === brandIds.length && materialBrandsIds.length === brandIds.length;
+                return intersection.length > 0;
+            });
+    }
+
+    filterByMaterialPropertiesIds(
+        propertiesIds: number[],
+        params: { strict?: boolean, allowEmpty?: boolean } = {strict: false, allowEmpty: false}
+    ): this {
+        const {strict, allowEmpty} = params;
+
+        return this
+            .filterBy((material) => {
+                const materialPropertyIds = material.material_standard?.material_properties?.pluck('id') || [];
+                const intersection = _.intersection(materialPropertyIds, propertiesIds);
+                if (allowEmpty && materialPropertyIds.length === 0) return true;
+                if (strict) return intersection.length === propertiesIds.length && materialPropertyIds.length === propertiesIds.length;
+                return intersection.length > 0;
+            });
+    }
+
+    filterByExcludedMaterialPropertiesIds(propertiesIds: number[]): this {
+        return this
+            .filterBy((material) => {
+                const materialPropertyIds = material.material_standard?.material_properties?.pluck('id') || [];
+                const intersection = _.intersection(materialPropertyIds, propertiesIds);
+                return intersection.length === 0;
+            });
+    }
+
+    filterByCutFrom(materialUuid: string): this {
+        return this.filterBy((material) => {
+            return material.cut_from === materialUuid;
+        });
+    }
+
+    filterByCutOperationUuid(operationUuid: string): this {
+        return this.filterBy((material) => {
+            return material.cut_operation_uuid === operationUuid;
+        });
+    }
+
+    filterBySameBrands(materialUuid: string): this {
+
+        const targetStandard = this.findByUuidOrFail(materialUuid).material_standard
+        if (!targetStandard) {
+            return new MaterialCollection([]) as this
+        }
+
+        return this.filterBy((material: Material) => {
+            return _.isEqual(
+                targetStandard.material_brands.pluck('id').sort(),
+                material.material_standard.material_brands.pluck('id').sort()
+            )
+        })
+    }
+
+    //HAS
+    hasWithMaterialType(typeId: number): boolean {
+        return !!this.filterByMaterialTypeIds([typeId]).getCount();
+    }
+
+    hasAngularElements(): boolean {
+        return this.hasWithMaterialType(MaterialTypes.ANGULAR_ELEMENT)
+    }
+
+    hasPiles(): boolean {
+        return this.hasWithMaterialType(MaterialTypes.PILE)
+    }
+
+    // REMOVES
+    removeByCutFrom(materialUuid: string): void {
+        this.removeMany(
+            this.filterByCutFrom(materialUuid).getAll()
+        )
+    }
+
+    removeByCutOperationUuid(cutOperationUuid: string): void {
+        this.removeMany(
+            this.filterByCutOperationUuid(cutOperationUuid).getAll()
+        )
+    }
+
+    //
+    //
+    //
+    //
+
+    //
+    //
+    //
+    //
+
 
     getLockedMaterials(): Material[] {
         return this.items.filter(material => material.isLocked())
@@ -98,14 +361,14 @@ export class MaterialCollection extends BaseCollection<Material> {
      * @param newMaterial - новый материал
      * @returns true если замена прошла успешно, false если материал не найден
      */
-    replaceByUuid(uuid: string, newMaterial: Material): boolean {
-        const idx = this.items.findIndex(m => m.getUuid() === uuid)
-        if (idx !== -1) {
-            this.items[idx] = newMaterial
-            return true
-        }
-        return false
-    }
+    // replaceByUuid(uuid: string, newMaterial: Material): boolean {
+    //     const idx = this.items.findIndex(m => m.getUuid() === uuid)
+    //     if (idx !== -1) {
+    //         this.items[idx] = newMaterial
+    //         return true
+    //     }
+    //     return false
+    // }
 
     allHavePositiveQuantityAndAmount(): boolean {
         return this.items.every(m => m.quantity > 0 && m.amount > 0)
@@ -220,9 +483,7 @@ export class MaterialCollection extends BaseCollection<Material> {
      * @param typeIds - массив ID типов материалов
      * @returns новая коллекция с отфильтрованными материалами
      */
-    filterByMaterialTypeIds(typeIds: number[]): this {
-        return useMaterialCollectionFilter().filterByMaterialTypeIds(this, typeIds) as this
-    }
+
 
     /**
      * Фильтрует материалы по массиву ID марок материалов

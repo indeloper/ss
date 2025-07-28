@@ -4,8 +4,10 @@
 >
 import type {Material} from "~/models/Material";
 import type {MaterialCollection} from "~/models/collections/MaterialCollection";
-import type {CutParams} from "~/composables/useMaterialTransformation";
+import type {CutParams} from "~/composables/useMaterialTransformation111";
 import {AngleRight} from '@vicons/fa'
+
+const message = useMessage()
 
 const props = defineProps<{
   materials: MaterialCollection,
@@ -70,9 +72,12 @@ const handleDropToSelectedMaterials = (event: DragEvent) => {
 
 const handleConfirmResult = () => {
 
-  showResultMaterialSettingsModal.value = true
+  if (filteredSelectedMaterials.value.getCount() <= 1) {
+    message.warning('Для стыковки необходимо 2 или более материалов')
+    return
+  }
 
-  // confirmJoinResult()
+  showResultMaterialSettingsModal.value = true
 }
 
 const handleClearUnjoined = () => {
@@ -196,8 +201,26 @@ const resultMaterialsContextMenuOptions = ref([
       class="min-w-[60vw] min-h-[60vh]"
   >
     <ui-card title="Параметры создания результата">
+      <n-alert
+          type="success"
+          :show-icon="false"
+      >
+        Для стыковки не обходимо добавить лист
+        <p>{{ filteredSelectedMaterials.getCount() - 1 }}</p>
+      </n-alert>
+      <n-divider/>
       <div class="grid grid-cols-2 gap-4">
-        <ListMaterial :materials="sheets"/>
+        <div>
+          <p class="mb-2 font-medium">Доступный лист:</p>
+          <ListMaterial :materials="sheets"/>
+        </div>
+        <div>
+          <p class="mb-2 font-medium">Результат:</p>
+          <CardMaterial
+              v-if="previewResult"
+              :material="previewResult"
+          />
+        </div>
       </div>
     </ui-card>
   </n-modal>

@@ -32,12 +32,20 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
     }
   }
 
+  removeMany(items: T[]): void {
+    items.forEach(item => this.remove(item))
+  }
+
   getAll(): T[] {
     return this.items
   }
 
   findById(id: number): T | undefined {
     return _.find(this.items, item => item.getId() === id)
+  }
+
+  filterByIds(ids: number | number[]): this {
+    return new (this.constructor as any)(_.filter(this.items, item => ids.includes(item.getId())))
   }
 
   findByUuid(uuid: string): T | undefined {
@@ -86,6 +94,15 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
 
   pluck<K>(path: string): K[] {
     return _.map(this.items, item => _.get(item, path))
+  }
+
+  replaceByUuid(uuid: string, newItem: T): boolean {
+    const idx = this.items.findIndex(m => m.getUuid() === uuid)
+    if (idx !== -1) {
+      this.items[idx] = newItem
+      return true
+    }
+    return false
   }
 
   compareByExtractedValues<K>(item1: T, item2: T, extractFn: (item: T) => K[]): boolean {
@@ -172,5 +189,19 @@ export abstract class BaseCollection<T extends { getId(): number; getUuid(): str
       return callback(this)
     }
     return this
+  }
+
+  or(...predicates: Array<((item: T) => boolean) | Partial<T>>): this {
+    const filteredItems = _.filter(this.items, (item) => {
+      return predicates.some(predicate => {
+        if (typeof predicate === 'function') {
+          return predicate(item);
+        } else {
+          return _.isMatch(item, predicate);
+        }
+      });
+    });
+
+    return new (this.constructor as any)(filteredItems);
   }
 }

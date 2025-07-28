@@ -1,385 +1,342 @@
+import type {MaterialCollection} from "~/models/collections/MaterialCollection";
 import {Material} from "~/models/Material";
-import {MaterialCollection} from "~/models/collections/MaterialCollection";
-import {watchArray} from "@vueuse/core";
+import {useMaterialCut} from "~/composables/useMaterialCut";
+import type {CutParams} from "~/composables/useMaterialCut";
+import {useMaterialTransformationStore} from "~/stores/materialTransformation";
+import {useMaterialLibraryStore} from "~/stores/materialLibrary";
+import type {MaterialStandardCollection} from "~/models/collections/MaterialStandardCollection";
+import type {UnwrapRef} from "vue";
+import {useMaterialSelection} from "~/composables/useMaterialSelection";
+import _ from "lodash";
 import {MaterialTypes} from "~/enumerates/MaterialTypes";
+import {CUT_TRANSFORMATION_CONFIG} from "~/configurations/transformation/CutTransformationConfig";
+import {JOIN_TRANSFORMATION_CONFIG} from "~/configurations/transformation/JoinTransformationConfig";
+import {ANGLE_TRANSFORMATION_CONFIG} from "~/configurations/transformation/AngleTransformationConfig";
+import type {BaseTransformationConfig} from "~/configurations/transformation/BaseTransformationConfig";
 
-export interface CutParams {
-    quantity: number,
-    amount: number,
-    cutType: 'standard' | 'equal'
-}
+export const useMaterialTransformation = (
+    type: number,
+    materials: MaterialCollection
+) => {
 
-export const useMaterialTransformation = (materials: MaterialCollection, selectedMaterials: MaterialCollection) => {
-
-    const {cutMaterial, undoCutOperation} = useMaterialCut()
     const message = useMessage()
+    const dialog = useDialog()
+
+    const materialTransformationStore = useMaterialTransformationStore()
+    const {resultMaterials, selectedMaterials} = materialTransformationStore
+
     const materialLibraryStore = useMaterialLibraryStore()
-    const {standards} = storeToRefs(materialLibraryStore)
 
-    const previewResult = ref<Material | null>(null)
-    const resultMaterials = ref<MaterialCollection>(new MaterialCollection())
+    const {cutMaterial} = useMaterialCut()
+    const {
+        selectJoinedMaterial,
+        selectAngleMaterial,
+    } = useMaterialSelection()
 
-    const sheets = computed(() => materials.filterByMaterialTypeIds([MaterialTypes.HOT_ROLLED_SHEET]))
+    const showSourceMaterialCutFormModal = ref(false)
+
+    const selectedSourceMaterial = ref<Material | null>(null)
 
     const filteredMaterials = computed(() => {
 
-        return materials
-            .when(
-                selectedMaterials.filterNotJoinedTo().isEmpty(),
-                materialCollection => materialCollection.filterAvailableToJoinTransformation()
-            ).when(
-                !selectedMaterials.filterNotJoinedTo().isEmpty(),
-                materialCollection => {
-                    const firstSelectedMaterial = selectedMaterials.getFirst()
-                    return materialCollection.filterAvailableToJoinToMaterial(firstSelectedMaterial)
-                }
-            )
-    })
-
-    const filteredSelectedMaterials = computed(() => {
-        return selectedMaterials.filterNotJoinedTo()
-    })
-
-    const processCutMaterial = (
-        cutParams: {
-            material: Material,
-            params: CutParams,
-            sourceCollection: MaterialCollection,
-            resultCollection: MaterialCollection,
-            remainderCollection?: MaterialCollection,
+        if (type === 1) {
+            return materials.filterAvailableForCut()
+        } else if (type === 2) {
+            return materials.filterAvailableForJoin(selectedMaterials.getFirst()?.cut_from ?? undefined)
+        } else if (type === 3) {
+            return materials
+                .filterAvailableForAngle(
+                    selectedMaterials.filterPiles().getFirst()?.cut_from ?? undefined,
+                    selectedMaterials.filterAngularElements().getFirst()?.cut_from ?? undefined,
+                )
+        } else if (type === 4) {
+            return materials.filterAvailableForWedge()
+        } else if (type === 5) {
+            return materials.filterAvailableForBeam()
+        } else if (type === 6) {
+            return materials.filterAvailableForAngleSplit()
+        } else if (type === 7) {
+            return materials.filterAvailableForBeamSplit()
+        } else if (type === 8) {
+            return materials.filterAvailableForBeam()
+        } else if (type === 9) {
+            return materials.filterAvailableForSupport()
         }
-    ) => {
-        const sourceCollection = cutParams.sourceCollection
-        const resultCollection = cutParams.resultCollection
-        const remainderCollection = cutParams.remainderCollection || sourceCollection
+    })
 
-        const result = cutMaterial(cutParams.material, cutParams.params.quantity, cutParams.params.amount, cutParams.params.cutType)
+    const previewResultMaterial = computed(() => {
+        if (type === 2) {
+            const firstMaterial = selectedMaterials.getFirst()
+            if (!firstMaterial) return null
 
-        if (!result) {
-            message.error('Произошла ошибка. Не удалось разделить материал.')
+            if ((selectedMaterials.getFirst()?.isJoined && firstMaterial.isPile) || firstMaterial.isBeam || firstMaterial.isStraightSeamPipe) {
+
+                const joinedMaterial = _.cloneDeep(firstMaterial)
+                joinedMaterial.quantity = selectedMaterials.getTotalAmountQuantity()
+                joinedMaterial.amount = 1
+
+                return joinedMaterial
+            } else {
+
+                const joinedMaterial = selectJoinedMaterial(firstMaterial)
+
+                if (!joinedMaterial) return null
+
+                joinedMaterial.quantity = selectedMaterials.getTotalAmountQuantity()
+                joinedMaterial.amount = 1
+
+                return joinedMaterial
+
+
+            }
+        } else if (type === 3) {
+
+            const angleMaterial = selectAngleMaterial(
+                selectedMaterials.filterPiles()?.getFirst() ?? undefined,
+                selectedMaterials.filterAngularElements().getFirst() ?? undefined
+            )
+
+            if (!angleMaterial) return null
+
+            angleMaterial.quantity = selectedMaterials.filterPiles()?.getFirst().quantity
+            angleMaterial.amount = 1
+
+            return angleMaterial
+
+        } else {
+            return null
+        }
+    })
+
+    const materialCutFormModeIsSplit = computed(() => [2].includes(type))
+
+    const sourceMaterialContextMenuItems = computed(() => {
+        return [
+            {
+                label: 'Разделить',
+                key: 'cut',
+                disabled: (item: Material) => item.isZeroed,
+                action: (item: Material) => sourceMaterialClick(item.uuid)
+            },
+            {
+                label: 'Восстановить',
+                key: 'restore',
+                disabled: (item: Material) => !item.isChanged,
+                action: (item: Material) => restoreSourceMaterial(item)
+            }
+        ]
+    })
+
+    const selectedMaterialContextMenuItems = computed(() => {
+        return [
+            {
+                label: 'Разделить',
+                key: 'cut',
+                action: (item: Material) => sourceMaterialClick(item.uuid)
+            },
+            {
+                label: 'Удалить',
+                key: 'remove',
+                disabled: (item: Material) => !item.cut_operation_uuid,
+                action: (item: Material) => removeSelectedMaterial(item)
+            }
+        ]
+    })
+
+    //main material methods
+    const sourceMaterialClick = (materialUuid: string) => {
+
+        const material = materials.findByUuidOrFail(materialUuid)
+
+        if (!allowActionsWithSourceMaterial(material)) {
+            message.error('Невозможно выполнить операцию с выбранным материалом')
+            return false
+        }
+
+        selectedSourceMaterial.value = material
+
+        handleShowSourceMaterialCutForm()
+    }
+
+    const sourceMaterialDoubleClick = (materialUuid: string) => {
+
+        if (type === 1) return
+
+        const material = materials.findByUuidOrFail(materialUuid)
+
+        if (!allowActionsWithSourceMaterial(material)) {
+            message.error('Невозможно выполнить операцию с выбранным материалом')
+            return false
+        }
+
+        selectedSourceMaterial.value = material
+
+        submitSourceMaterialCut({
+            quantity: material.quantity,
+            amount: 1,
+            cutType: 'standard'
+        })
+    }
+
+    const submitSourceMaterialCut = (cutParams: CutParams) => {
+
+        if (!selectedSourceMaterial.value) {
+            message.error('Не удалось определить выбранный материал')
             return
         }
 
-        resultCollection.add(result.result)
-
-        if (result.remainder && result.remainder.length > 0) {
-            result.remainder.forEach((remainder) => {
-                remainderCollection.add(remainder)
-            })
-        }
-
-        if (result.unusedPart) {
-            sourceCollection.replaceByUuid(cutParams.material.uuid, result.unusedPart)
-        }
-    }
-
-    const cutMaterialOnePart = (
-        material: Material,
-        sourceCollection: MaterialCollection,
-        resultCollection: MaterialCollection
-    ) => {
-        processCutMaterial({
-            material,
-            params: {
-                quantity: material.quantity,
-                amount: 1,
-                cutType: 'standard'
-            },
-            sourceCollection,
-            resultCollection
-        })
-    }
-
-    const cutMaterialFull = (
-        material: Material,
-        sourceCollection: MaterialCollection,
-        resultCollection: MaterialCollection
-    ) => {
-        processCutMaterial({
-            material,
-            params: {
-                quantity: material.quantity,
-                amount: material.amount,
-                cutType: 'standard'
-            },
-            sourceCollection,
-            resultCollection
-        })
-    }
-
-    const cutMaterialWithParams = (
-        material: Material,
-        params: CutParams,
-        sourceCollection: MaterialCollection,
-        resultCollection: MaterialCollection
-    ) => {
-        processCutMaterial({
-            material,
-            params,
-            sourceCollection,
-            resultCollection
-        })
-    }
-
-    const restoreMaterial = (material: Material) => {
-        const selectedResults = selectedMaterials.filterAllByCutFrom(material.uuid)
-
-        selectedResults.getAll().forEach(derivedMaterial => {
-            undoCutMaterial(derivedMaterial)
-        })
-
-        const materialResults = materials.filterAllByCutFrom(material.uuid)
-
-        materialResults.getAll().forEach(derivedMaterial => {
-            undoCutMaterial(derivedMaterial)
-        })
-    }
-
-    const undoCutMaterial = (material: Material) => {
-        undoCutOperation(material, materials, selectedMaterials)
-    }
-
-    const confirmJoinResult = () => {
-        // Проверяем, что есть превью результата
-        if (!previewResult.value) {
-            message.error('Нет результата для подтверждения')
-            return false
-        }
-
-        // Получаем только непривязанные материалы
-        const notJoinedMaterials = selectedMaterials.filterNotJoinedTo()
-
-        // Проверяем, что выбрано минимум 2 материала
-        if (notJoinedMaterials.getCount() < 2) {
-            message.error('Для стыковки необходимо выбрать минимум 2 материала')
-            return false
-        }
-
-        try {
-            // Добавляем результат в коллекцию результатов
-            const resultMaterial = previewResult.value
-            resultMaterials.value.add(resultMaterial)
-
-            // Обновляем поле join_to у всех непривязанных материалов
-            const notJoinedMaterialsList = notJoinedMaterials.getAll()
-            notJoinedMaterialsList.forEach(material => {
-                const updatedMaterial = material.cloneWithNewParams(
-                    material.quantity,
-                    material.amount,
-                    material.cut_operation_uuid,
-                    true
-                )
-                updatedMaterial.join_to = resultMaterial.uuid
-                selectedMaterials.replaceByUuid(material.uuid, updatedMaterial)
-            })
-
-            // Сбрасываем превью
-            previewResult.value = null
-
-            message.success(`Создан результат стыковки из ${notJoinedMaterialsList.length} материалов`)
-            return true
-
-        } catch (error) {
-            console.error('Ошибка при подтверждении результата стыковки:', error)
-            message.error('Произошла ошибка при создании результата стыковки')
-            return false
-        }
-    }
-
-    const canMaterialBeJoined = (material: Material): boolean => {
-        try {
-            // Создаем временную коллекцию с новым материалом
-            const tempCollection = selectedMaterials.filterNotJoinedTo().clone()
-            tempCollection.add(material)
-
-            // Проверяем, что есть первый материал и его стандарт
-            const firstMaterial = tempCollection.getFirst()
-            if (!firstMaterial || !firstMaterial.material_standard) {
-                message.error('Не удалось определить стандарт материала')
-                return false
-            }
-
-            // Получаем противоположные стандарты для стыковки
-            const oppositeStandards = standards.value.filterJoinOpposite(firstMaterial.material_standard.id)
-
-            // Проверяем, что найдены противоположные стандарты
-            if (oppositeStandards.isEmpty()) {
-                message.error('Для данного материала нет стыкованного варианта')
-                return false
-            }
-
-            return true
-
-        } catch (error) {
-            console.error('Ошибка при проверке возможности стыковки:', error)
-            message.error('Произошла ошибка при проверке возможности стыковки')
-            return false
-        }
-    }
-
-    const editJoinResult = (resultMaterial: Material) => {
-        try {
-            // Удаляем результат из коллекции результатов
-            resultMaterials.value.removeByUuid(resultMaterial.uuid)
-
-            // СНАЧАЛА удаляем из selectedMaterials все материалы без join_to (непривязанные в средней колонке)
-            // чтобы избежать смешения разных марок материалов
-            const materialsToRemove = selectedMaterials.filterNotJoinedTo().getAll()
-            materialsToRemove.forEach(material => {
-                undoCutMaterial(material)
-            })
-
-            // ПОТОМ находим все материалы, привязанные к этому результату
-            const joinedMaterials = selectedMaterials.getAll().filter(material =>
-                material.join_to === resultMaterial.uuid
-            )
-
-            // Обнуляем join_to у всех привязанных материалов (НЕ удаляем их)
-            joinedMaterials.forEach(material => {
-                const updatedMaterial = material.cloneWithNewParams(
-                    material.quantity,
-                    material.amount,
-                    material.cut_operation_uuid,
-                    true
-                )
-                updatedMaterial.join_to = undefined
-                selectedMaterials.replaceByUuid(material.uuid, updatedMaterial)
-            })
-
-            message.success(`Результат стыковки отменен. Материалы возвращены для редактирования`)
-
-        } catch (error) {
-            console.error('Ошибка при отмене результата стыковки:', error)
-            message.error('Произошла ошибка при отмене результата стыковки')
-        }
-    }
-
-    const clearUnjoined = () => {
-        try {
-            // Получаем все материалы без join_to
-            const materialsToRemove = selectedMaterials.filterNotJoinedTo().getAll()
-
-            if (materialsToRemove.length === 0) {
-                message.info('Нет материалов для очистки')
+        if (type === 2 && !selectedSourceMaterial.value.isJoined && selectedSourceMaterial.value.isPile) {
+            if (!selectJoinedMaterial(selectedSourceMaterial.value)) {
+                message.error('У материала нет стыкованного варианта')
                 return
             }
+        } else if (type === 3) {
 
-            // Удаляем каждый материал через undoCutMaterial
-            materialsToRemove.forEach(material => {
-                undoCutMaterial(material)
-            })
-
-            message.success(`Очищено ${materialsToRemove.length} материалов`)
-
-        } catch (error) {
-            console.error('Ошибка при очистке материалов:', error)
-            message.error('Произошла ошибка при очистке материалов')
+            if (selectedSourceMaterial.value.isPile) {
+                if (!selectAngleMaterial(selectedSourceMaterial.value)) {
+                    message.error('В системе нет такого материала с угловым вариантом.')
+                    return
+                }
+            } else {
+                if (!selectAngleMaterial(selectedMaterials.filterPiles()?.getFirst() ?? undefined, selectedSourceMaterial.value)) {
+                    message.error('В системе нет варианта выбранного материала с таким замком.')
+                    return
+                }
+            }
         }
-    }
 
-    const deleteJoinResult = (resultMaterial: Material) => {
         try {
-            // Удаляем результат из коллекции результатов
-            resultMaterials.value.removeByUuid(resultMaterial.uuid)
 
-            // Находим все материалы, привязанные к этому результату
-            const joinedMaterials = selectedMaterials.getAll().filter(material =>
-                material.join_to === resultMaterial.uuid
+            const result = cutMaterial(
+                selectedSourceMaterial.value as Material,
+                cutParams.quantity,
+                cutParams.amount,
+                cutParams.cutType
             )
 
-            // Удаляем каждый привязанный материал через undoCutMaterial
-            joinedMaterials.forEach(material => {
-                undoCutMaterial(material)
-            })
+            if (result) {
+                processCutSourceMaterial(result)
+            } else {
+                console.error('Произошла ошибка. Не удалось разделить материал.')
+            }
 
-            message.success(`Результат стыковки удален. Удалено ${joinedMaterials.length} материалов`)
-
-        } catch (error) {
-            console.error('Ошибка при удалении результата стыковки:', error)
-            message.error('Произошла ошибка при удалении результата стыковки')
+        } catch (e: any) {
+            message.error(e.message)
+            console.error(e)
         }
     }
 
-    watch(
-        () => selectedMaterials,
-        (materials) => {
-            // Сбрасываем превью если нет выбранных материалов
-            if (!materials || materials.filterNotJoinedTo().getCount() === 0) {
-                previewResult.value = null
-                return
+    const restoreSourceMaterial = (material: Material) => {
+        dialog.warning({
+            title: 'Подтверждение',
+            content: 'Вы уверены, что хотите восстановить значения материала? Отделенные части материала будут удалены.',
+            positiveText: 'Подтвердить',
+            negativeText: 'Отмена',
+            draggable: true,
+            onPositiveClick: () => {
+                material.resetToInitialValues()
+                selectedMaterials.removeByCutFrom(material.uuid)
             }
+        })
+    }
 
-            try {
-                const firstMaterial = selectedMaterials.filterNotJoinedTo().getFirst()
+    const removeSelectedMaterial = (material: Material) => {
 
-                // Проверяем, что есть первый материал и его стандарт
-                if (!firstMaterial || !firstMaterial.material_standard) {
-                    previewResult.value = null
-                    return
-                }
+        if (!material.cut_operation_uuid) {
+            message.error('Не удалось определить операцию резки материала')
+            return
+        }
 
-                // Получаем противоположные стандарты для стыковки
-                const oppositeStandards = standards.value.filterJoinOpposite(firstMaterial.material_standard.id)
+        dialog.warning({
+            title: 'Подтверждение',
+            content: 'Вы уверены, что хотите удалить отделенную часть материала. Вместе с ней будут удалены все части, образованные в процессе резки',
+            positiveText: 'Подтвердить',
+            negativeText: 'Отмена',
+            draggable: true,
+            onPositiveClick: () => {
 
-                // Проверяем, что найдены противоположные стандарты
-                if (!oppositeStandards || oppositeStandards.isEmpty()) {
-                    console.warn('Не найдены противоположные стандарты для стыковки')
-                    previewResult.value = null
-                    return
-                }
+                if (!material.cut_operation_uuid || !material.cut_from) return
 
-                const oppositeStandard = oppositeStandards.getFirst()
-                if (!oppositeStandard) {
-                    previewResult.value = null
-                    return
-                }
+                const originalMaterial = materials.findByUuidOrFail(material.cut_from)
 
-                // Вычисляем параметры результирующего материала
-                const totalQuantity = selectedMaterials.filterNotJoinedTo().getTotalAmountQuantity()
-                const totalWeight = selectedMaterials.filterNotJoinedTo().getTotalWeight()
+                const parts = selectedMaterials.filterByCutOperationUuid(material.cut_operation_uuid)
 
-                // Создаем превью результирующего материала
-                const resultMaterial = new Material({
-                    id: null,
-                    uuid: `result-${Date.now()}`,
-                    material_standard: oppositeStandard.toTransformed(),
-                    quantity: totalQuantity,
-                    amount: 1,
-                    locked: false,
-                    lock_reason: null,
-                    project_object_id: firstMaterial.project_object_id,
-                    length_group_name: '',
-                    length_group_min: 0,
-                    length_group_max: 0,
-                    old_material_standard_id: oppositeStandard.old_standard_id || null
-                })
-
-                previewResult.value = resultMaterial
-
-            } catch (error) {
-                console.error('Ошибка при создании превью результата:', error)
-                previewResult.value = null
+                originalMaterial.resetByParts(parts.getAll())
+                selectedMaterials.removeByCutOperationUuid(material.cut_operation_uuid)
             }
-        },
-        {deep: true}
-    )
+        })
+    }
+
+    //selected materials methods
+    const selectedMaterialClick = (materialUuid: string) => {
+        // selectedSourceMaterial.value = materials.findByUuidOrFail(materialUuid)
+        // handleShowSourceMaterialCutForm()
+    }
+
+    const selectedMaterialDoubleClick = (materialUuid: string) => {
+        console.log(materialUuid)
+    }
+
+    //ui handlers
+    const handleShowSourceMaterialCutForm = () => {
+        showSourceMaterialCutFormModal.value = true
+    }
+
+    //utils
+    const processCutSourceMaterial = (result: CutMaterialResult) => {
+
+        if (!selectedMaterials) {
+            console.error('selectedMaterials.value is null')
+            return
+        }
+
+        const {result: resultMaterial, remainder, unusedPart} = result
+
+
+        if (resultMaterial) {
+            selectedMaterials.add(resultMaterial)
+        }
+
+        if (remainder && remainder.length > 0 && selectedSourceMaterial.value) {
+
+            if ([1].includes(type)) {
+                selectedMaterials.addAfter(resultMaterial.uuid, result.remainder)
+            } else {
+                selectedMaterials.addAfter(selectedSourceMaterial.value.uuid, remainder)
+            }
+        }
+
+        if (unusedPart && selectedSourceMaterial.value) {
+            materials.replaceByUuid(selectedSourceMaterial.value?.uuid, unusedPart)
+        }
+    }
+
+    const allowActionsWithSourceMaterial = (material: Material) => {
+        if (type === 3) {
+            if (selectedMaterials.getCount() === 2) return false
+        }
+
+        return true
+    }
+
 
     return {
-        sheets,
-        undoCutMaterial,
-        restoreMaterial,
         filteredMaterials,
-        filteredSelectedMaterials,
-        previewResult,
+        selectedSourceMaterial,
+        materialCutFormModeIsSplit,
+        showSourceMaterialCutFormModal,
         resultMaterials,
-        processCutMaterial,
-        cutMaterialOnePart,
-        cutMaterialFull,
-        cutMaterialWithParams,
-        confirmJoinResult,
-        canMaterialBeJoined,
-        editJoinResult,
-        deleteJoinResult,
-        clearUnjoined
+        selectedMaterials,
+        previewResultMaterial,
+
+        sourceMaterialClick,
+        selectedMaterialClick,
+        sourceMaterialDoubleClick,
+        selectedMaterialDoubleClick,
+        submitSourceMaterialCut,
+        handleShowSourceMaterialCutForm,
+
+        sourceMaterialContextMenuItems,
+        selectedMaterialContextMenuItems
     }
 }

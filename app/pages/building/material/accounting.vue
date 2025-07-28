@@ -8,6 +8,7 @@ import {definePageMeta, useMaterialsStore} from "#imports";
 import {ref, computed, onMounted} from 'vue'
 import {storeToRefs} from 'pinia'
 import type {MenuOption} from "naive-ui";
+import TRANSFORMATION_TYPES from "~/constants/transformationTypes";
 
 const loadingBar = useLoadingBar()
 
@@ -75,34 +76,20 @@ const menuOptions = computed<MenuOption[]>(() => {
       label: 'Изготовление',
       key: 'transformation',
       disabled: materialsLoading.value || projectObjectsLoading.value,
-      children: [
-        {
-          label: () => {
-            return h('p', {
-              onClick: () => {
-                showTransformationDrawer.value = true
-                selectedTransformationType.value = 1
-              }
-            }, {
-              default: () => 'Резка по длине'
-            })
-          },
-          key: 'cut',
+      children: TRANSFORMATION_TYPES.map(type => ({
+        label: () => {
+          return h('p', {
+            onClick: () => {
+              showTransformationDrawer.value = true
+              selectedTransformationType.value = type.value
+            }
+          }, {
+            default: () => type.label
+          })
         },
-        {
-          label: () => {
-            return h('p', {
-              onClick: () => {
-                showTransformationDrawer.value = true
-                selectedTransformationType.value = 2
-              }
-            }, {
-              default: () => 'Стыковка по длине'
-            })
-          },
-          key: 'join',
-        },
-      ],
+        key: type.key,
+        disabled: type.disabled
+      }))
     },
     {
       label: 'Движение',

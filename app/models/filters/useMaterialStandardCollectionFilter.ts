@@ -65,6 +65,11 @@ export const useMaterialStandardCollectionFilter = () => {
         )
     }
 
+    const filterAlternativerForCuttedMaterialStandard = (standards: MaterialStandardCollection, id: number): MaterialStandardCollection => {
+        // Находит стыкованный стандарт для разрезанного материала
+        return filterJoinOpposite(standards, id)
+    }
+
     const filterStandardsWithSameBrands = (standards: MaterialStandardCollection, standardId: number): MaterialStandardCollection => {
         const targetStandard = standards.findById(standardId)
         if (!targetStandard) return new MaterialStandardCollection([])

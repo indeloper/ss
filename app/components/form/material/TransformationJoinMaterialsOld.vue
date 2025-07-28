@@ -6,7 +6,7 @@ import {MaterialCollection} from "~/models/collections/MaterialCollection";
 import {useMaterialTransformationStore} from "~/stores/materialTransformation";
 import {Material} from "~/models/Material";
 import {useMaterialCut} from "~/composables/useMaterialCut";
-import {useMaterialTransformation} from "~/composables/useMaterialTransformation";
+import {useMaterialTransformation111} from "~/composables/useMaterialTransformation111";
 import {useDialog} from 'naive-ui';
 import {MaterialStandardCollection} from "~/models/collections/MaterialStandardCollection";
 import {watch} from 'vue';
@@ -30,7 +30,7 @@ const {
   processCutAllResult,
   processCutResult,
   findMaterialsWithOperationUuid
-} = useMaterialTransformation(props.materials)
+} = useMaterialTransformation111(props.materials)
 
 
 const dialog = useDialog()

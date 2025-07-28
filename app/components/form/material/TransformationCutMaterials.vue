@@ -6,7 +6,7 @@ import type {MaterialCollection} from "~/models/collections/MaterialCollection";
 import {useMaterialTransformationStore} from "~/stores/materialTransformation";
 import type {Material} from "~/models/Material";
 import {useMaterialCut} from "~/composables/useMaterialCut";
-import {useMaterialTransformation} from "~/composables/useMaterialTransformation";
+import {useMaterialTransformation111} from "~/composables/useMaterialTransformation111";
 import {useDialog} from 'naive-ui';
 import {MaterialStandardCollection} from "~/models/collections/MaterialStandardCollection";
 
@@ -22,7 +22,7 @@ const materialsLibraryStore = useMaterialLibraryStore()
 const {standards} = storeToRefs(materialsLibraryStore)
 const {materials: resultMaterials} = storeToRefs(materialTransformationStore)
 const {undoCutOperation, restoreMaterial} = useMaterialCut()
-const {processCutResult, findMaterialsWithOperationUuid} = useMaterialTransformation()
+const {processCutMaterial, findMaterialsWithOperationUuid} = useMaterialTransformation111()
 const dialog = useDialog()
 
 const showSourceMaterialCutModal = ref<boolean>(false)
@@ -57,36 +57,32 @@ const handleResultMaterialClick = (uuid: string) => {
   console.log(selectedResultMaterial.value)
 }
 
-const handleSourceCutConfirmed = (result: {
-  material: any,
-  cutParams: {
+const handleSourceCutConfirmed = (cutParams: {
     quantity: number,
     amount: number,
     cutType: 'standard' | 'equal'
-  },
-  cutResult: {
-    result: any,
-    remainder: any[],
-    unusedPart: any | null
-  }
-}) => {
-  processCutResult(result, props.materials, resultMaterials.value)
+  }) => {
+  processCutMaterial({
+    material: selectedSourceMaterial.value,
+    params: cutParams,
+    sourceCollection: props.materials,
+    resultCollection: resultMaterials.value,
+    remainderCollection: resultMaterials.value
+  })
 }
 
-const handleResultCutConfirmed = (result: {
-  material: any,
-  cutParams: {
-    quantity: number,
-    amount: number,
-    cutType: 'standard' | 'equal'
-  },
-  cutResult: {
-    result: any,
-    remainder: any[],
-    unusedPart: any | null
-  }
+const handleResultCutConfirmed = (cutParams: {
+  quantity: number,
+  amount: number,
+  cutType: 'standard' | 'equal'
 }) => {
-  processCutResult(result, resultMaterials.value, resultMaterials.value, false)
+  processCutMaterial({
+    material: selectedResultMaterial.value,
+    params: cutParams,
+    sourceCollection: resultMaterials.value,
+    resultCollection: resultMaterials.value,
+    zeroOut: true
+  })
 }
 
 const handleDeleteResultMaterial = (material: Material) => {
@@ -145,12 +141,12 @@ const handleChangeMaterialStandard = (uuid: string) => {
 }
 
 const handleRestoreMaterial = (material: Material) => {
-  const derivedMaterials = resultMaterials.value.filterCutFormMaterial(material)
+  const derivedMaterials = resultMaterials.value.where('cut_from', material.uuid)
 
-  if (derivedMaterials.length > 1) {
+  if (derivedMaterials.getCount() > 1) {
     dialog.warning({
       title: 'Подтверждение восстановления',
-      content: `Будет удалено ${derivedMaterials.length} отделенных частей и восстановлен оригинальный материал. Продолжить?`,
+      content: `Будет удалено ${derivedMaterials.getCount()} отделенных частей и восстановлен оригинальный материал. Продолжить?`,
       positiveText: 'Да, восстановить',
       negativeText: 'Отмена',
       onPositiveClick: () => {

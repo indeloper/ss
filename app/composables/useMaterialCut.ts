@@ -9,6 +9,12 @@ export interface CutMaterialResult {
 
 export type CutType = 'standard' | 'equal';
 
+export interface CutParams {
+    quantity: number,
+    amount: number,
+    cutType: 'standard' | 'equal'
+}
+
 export const useMaterialCut = () => {
 
     const cutAll = (
@@ -349,8 +355,8 @@ export const useMaterialCut = () => {
         }
 
         const derivedMaterials: Material[] = [
-            ...resultCollection.filterCutFormMaterial(material),
-            ...sourceCollection.filterCutFormMaterial(material)
+            ...resultCollection.filterCutFormMaterial(material).getAll(),
+            ...sourceCollection.filterCutFormMaterial(material).getAll()
         ]
 
         try {

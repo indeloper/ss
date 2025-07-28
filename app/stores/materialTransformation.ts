@@ -3,16 +3,19 @@ import type {Material} from "~/models/Material";
 import {useMaterialSupply} from "~/composables/useMaterialSupply";
 
 export const useMaterialTransformationStore = defineStore('materialTransformation', () => {
-    const materials = ref<MaterialCollection>(new MaterialCollection())
+    const resultMaterials = ref<MaterialCollection>(new MaterialCollection())
+    const selectedMaterials = ref<MaterialCollection>(new MaterialCollection())
     const toProjectObjectId = ref<number | null>(useProjectObjectsStore().selectedProjectObjectId)
     const toResponsibleUserId = ref<number | null>(useSanctum().user.value?.id)
     const comment = ref<string | null>(null)
     const departureAt = ref<number | null>(Date.now())
-    const type = ref<number | null>(null)
+    const type = ref<number>(1)
     const usedMaterials = ref<MaterialCollection>(new MaterialCollection())
 
     const clearMaterials = () => {
-        materials.value = new MaterialCollection()
+        resultMaterials.value = new MaterialCollection()
+        selectedMaterials.value = new MaterialCollection()
+        usedMaterials.value = new MaterialCollection()
     }
 
     const resetForm = () => {
@@ -21,7 +24,6 @@ export const useMaterialTransformationStore = defineStore('materialTransformatio
         toResponsibleUserId.value = useSanctum().user.value?.id
         comment.value = null
         departureAt.value = Date.now()
-        type.value = null
     }
 
     const submit = async () => {
@@ -32,7 +34,7 @@ export const useMaterialTransformationStore = defineStore('materialTransformatio
             departure_at: new Date(departureAt.value!).toISOString(),
             transformation_type_id: type.value,
             comment: comment.value || '',
-            materials_after_transform: materials.value.getAll().map((material: Material) => ({
+            materials_after_transform: resultMaterials.value.getAll().map((material: Material) => ({
                 id: material.material_standard.id,
                 amount: material.amount,
                 quantity: material.quantity,
@@ -62,7 +64,8 @@ export const useMaterialTransformationStore = defineStore('materialTransformatio
 
     return {
         type,
-        materials,
+        resultMaterials,
+        selectedMaterials,
         clearMaterials,
         toProjectObjectId,
         toResponsibleUserId,

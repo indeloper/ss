@@ -3,8 +3,9 @@
     lang="ts"
 >
 
+import {useMaterialTransformation111} from "~/composables/useMaterialTransformation111";
 import {useMaterialTransformation} from "~/composables/useMaterialTransformation";
-
+import {useMaterialTransformationStore} from "~/stores/materialTransformation";
 const message = useMessage()
 const dialog = useDialog()
 
@@ -16,7 +17,7 @@ const props = defineProps<{
 const materialsStore = useMaterialsStore()
 const materialTransformationStore = useMaterialTransformationStore()
 const projectObjectsStore = useProjectObjectsStore()
-const materialTransformation = useMaterialTransformation()
+const materialTransformation = useMaterialTransformation111()
 
 const {activeMaterials} = storeToRefs(materialsStore)
 const {
@@ -33,6 +34,13 @@ const workingMaterials = ref(activeMaterials.value.clone())
 
 const step = ref(1)
 
+//
+//
+//
+//
+
+//
+//
 const materialsForm = ref()
 
 const goToNextStep = () => {
