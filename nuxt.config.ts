@@ -21,10 +21,7 @@ export default defineNuxtConfig({
   vite: {
     server: {
       host: '0.0.0.0',
-      hmr: {
-        protocol: 'wss',
-        host: 'app.sk-gorod.com'
-      },
+      allowedHosts: ['app.sk-gorod.com']
     },
     plugins: [
       tailwindcss(),
