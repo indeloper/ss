@@ -19,6 +19,13 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/main.css'],
   vite: {
+    server: {
+      host: '0.0.0.0',
+      hmr: {
+        protocol: 'wss',
+        host: 'app.sk-gorod.com'
+      },
+    },
     plugins: [
       tailwindcss(),
       AutoImport({
