@@ -44,7 +44,7 @@ export const useProjectObjectsStore = defineStore('projectObjects', () => {
       error.value = null
       
       const projectObjectCollection = await fetchWith()
-      projectObjects.value = projectObjectCollection
+      projectObjects.value = projectObjectCollection.filterBy(po => po.id === 1721)
       
     } catch (err) {
       error.value = err instanceof Error ? err.message : 'Ошибка загрузки объектов'
