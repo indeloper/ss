@@ -33,14 +33,14 @@ const props = defineProps<{
   enableSelection?: boolean
   selectionMode?: 'single' | 'multiple'
   itemTooltip?: (item: Material) => string,
+  itemType?: (item: Material) => string,
   markChanged?: boolean
 }>()
 
 const selection = defineModel<string | string[]>('selection', {default: () => []})
 
 const search = ref('')
-const contextMenuRef = ref<InstanceType<typeof ContextMenu> | null>(null)
-const selectedMaterial = ref<Material | null>(null)
+
 const clickTimeout = ref<number | null>(null)
 
 // Фильтры
@@ -201,44 +201,7 @@ watch(selectedMaterialBrandIds, () => {
 })
 
 // Преобразуем опции контекстного меню для ContextMenu компонента
-const contextMenuOptionsForComponent = computed(() => {
-  if (!props.contextMenuOptions || !selectedMaterial.value) return []
 
-  return props.contextMenuOptions.map(option => ({
-    label: option.label,
-    key: option.key,
-    disabled: typeof option.disabled === 'function'
-        ? option.disabled(selectedMaterial.value)
-        : option.disabled || false,
-    type: option.type
-  }))
-})
-
-// Обработчик правого клика
-const handleContextMenu = (event: MouseEvent, material: Material) => {
-  if (!props.enableContextMenu || !props.contextMenuOptions?.length) return
-
-  event.preventDefault()
-  selectedMaterial.value = material
-  contextMenuRef.value?.show(event)
-}
-
-// Обработчик выбора пункта меню
-const handleMenuSelect = (key: string | number) => {
-  if (!selectedMaterial.value) return
-
-  const option = props.contextMenuOptions?.find(opt => opt.key === key)
-  if (option?.action) {
-    option.action(selectedMaterial.value)
-  }
-
-  selectedMaterial.value = null
-}
-
-// Обработчик клика вне меню
-const handleClickOutside = () => {
-  selectedMaterial.value = null
-}
 
 // Обработчик клика на элементе
 const handleClick = (uuid: string, item: Material) => {
@@ -482,7 +445,6 @@ const isItemSelected = (uuid: string): boolean => {
         <div
             class="p-1"
             @click="handleClick(item.uuid, item)"
-            @contextmenu="handleContextMenu($event, item)"
             :draggable="props.enableDraggable"
             @dragstart="handleDragStart($event, item.uuid, item)"
         >
@@ -490,8 +452,10 @@ const isItemSelected = (uuid: string): boolean => {
               :key="item.uuid"
               :material="item"
               :disabled="props.itemDisabled?.(item)"
-              :type="isItemSelected(item.uuid) ? 'info' : undefined"
+              :type="isItemSelected(item.uuid) ? 'info' : props.itemType?.(item) || undefined"
               :tooltip="props.itemTooltip"
+              :enable-context-menu="props.enableContextMenu"
+              :context-menu-options="props.contextMenuOptions"
               v-bind="$attrs"
               :mark-changed="markChanged"
           >
@@ -513,13 +477,7 @@ const isItemSelected = (uuid: string): boolean => {
 
 
   <!-- Контекстное меню -->
-  <ContextMenu
-      v-if="enableContextMenu && contextMenuOptions?.length"
-      ref="contextMenuRef"
-      :options="contextMenuOptionsForComponent"
-      @select="handleMenuSelect"
-      @clickoutside="handleClickOutside"
-  />
+
 </template>
 
 <style scoped>

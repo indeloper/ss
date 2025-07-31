@@ -4,6 +4,10 @@
 >
 import {useMaterialSupplyStore} from "~/stores/materialSupply";
 
+definePageMeta({
+  docsKey: 'material-supply'
+})
+
 const message = useMessage()
 const dialog = useDialog()
 
@@ -64,7 +68,7 @@ const goToNextStep = () => {
       if (!departureAt.value) errors.push('дату')
       if (!operationReasonId.value) errors.push('причину поставки')
       if (!contractorId.value) errors.push('поставщика')
-      
+
       if (errors.length > 0) {
         message.error(`Заполните обязательные поля: ${errors.join(', ')}`)
       } else {
@@ -91,15 +95,15 @@ const handleSubmit = () => {
     onPositiveClick: async () => {
       try {
         const result = await materialSupplyStore.submit();
-        
+
         if (result.success) {
           message.success('Поставка материалов успешно создана!');
-          
+
           materialSupplyStore.resetForm();
           materialsStore.loadMaterialsByProjectObject(toProjectObjectId.value)
-          
+
           step.value = 1;
-          
+
         } else {
           if (result.error?.errors) {
             const errorMessages = Object.values(result.error.errors).flat().join('\n');
@@ -120,10 +124,12 @@ const handleSubmit = () => {
   })
 }
 
+
 onBeforeMount(() => {
   operationReasonsStore.loadSupplyReasons()
   contractorsStore.loadContractors()
 })
+
 
 watch(
     () => supplyReasons.value,

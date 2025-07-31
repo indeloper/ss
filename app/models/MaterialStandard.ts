@@ -1,6 +1,7 @@
 import { MaterialType } from './MaterialType'
 import { MaterialBrandCollection } from './collections/MaterialBrandCollection'
 import { MaterialPropertyCollection } from './collections/MaterialPropertyCollection'
+import { MaterialStandardCollection } from './collections/MaterialStandardCollection'
 import type { TransformedMaterialStandard } from './interfaces'
 import { BaseModel } from './BaseModel'
 
@@ -11,6 +12,7 @@ export class MaterialStandard extends BaseModel {
   public material_type: MaterialType
   public material_brands: MaterialBrandCollection
   public material_properties: MaterialPropertyCollection
+  public alternative_standards?: MaterialStandardCollection
 
   constructor(data: TransformedMaterialStandard) {
     super(data)
@@ -20,6 +22,9 @@ export class MaterialStandard extends BaseModel {
     this.material_type = new MaterialType(data.material_type)
     this.material_brands = new MaterialBrandCollection(data.material_brands)
     this.material_properties = new MaterialPropertyCollection(data.material_properties)
+    this.alternative_standards = data.alternative_standards 
+      ? new MaterialStandardCollection(data.alternative_standards)
+      : undefined
   }
 
   getDisplayName(): string {
@@ -76,6 +81,7 @@ export class MaterialStandard extends BaseModel {
       material_type: this.material_type, // если нужно, можно добавить .toTransformed()
       material_brands: this.material_brands.getAll(),
       material_properties: this.material_properties.getAll(),
+      alternative_standards: this.alternative_standards?.getAll(),
     }
   }
 

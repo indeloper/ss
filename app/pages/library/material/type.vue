@@ -16,18 +16,11 @@ definePageMeta({
 const materialLibraryStore = useMaterialLibraryStore()
 const { types } = storeToRefs(materialLibraryStore)
 
-const tableRef = ref()
-
 onMounted(() => {
-  // Загрузить данные, если они еще не загружены
   if (!types.value) {
     materialLibraryStore.loadAll()
   }
 })
-
-const handleCreate = () => {
-  tableRef.value?.handleCreate()
-}
 </script>
 
 <template>

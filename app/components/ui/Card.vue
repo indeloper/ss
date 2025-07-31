@@ -3,18 +3,35 @@
     lang="ts"
 >
 import {ref} from 'vue'
+import {InfoCircle} from '@vicons/fa'
+import {useDocumentationStore} from "~/stores/documentation";
+import {EllipsisV} from '@vicons/fa'
+import type {Material} from "~/models/Material";
+
+interface ContextMenuOption {
+  label: string
+  key: string
+  action: () => void
+  disabled?: boolean | (() => boolean)
+  type?: 'divider'
+}
 
 const props = defineProps<{
   title: string
   placeholder?: string
   canDrop?: (event: DragEvent) => boolean
-  enableDrop?: boolean
+  enableDrop?: boolean,
+  documentationKey?: string,
+  enableContextMenu?: boolean,
+  contextMenuOptions?: ContextMenuOption[],
 }>()
 
 const emit = defineEmits<{
   (e: 'drop', event: DragEvent): void
   (e: 'dragover', event: DragEvent): void
 }>()
+
+const documentationStore = useDocumentationStore()
 
 const isDragOver = ref(false)
 const canDropItem = ref(true)
@@ -60,6 +77,12 @@ const handleDragLeave = (event: DragEvent) => {
   }
 }
 
+
+const handleShowDocumentation = () => {
+  if (props.documentationKey) {
+    documentationStore.show(props.documentationKey)
+  }
+}
 </script>
 
 <template>
@@ -81,37 +104,31 @@ const handleDragLeave = (event: DragEvent) => {
     >
       <p
           v-if="title"
-          class="font-bold text-lg"
-      >{{ title }}</p>
-      <div
-          class="flex gap-2"
-          v-if="$slots.actions"
-      >
-        <slot name="actions"/>
+          class="font-bold text-lg flex gap-2 items-center"
+          v-show="!isDragOver"
+      >{{ title }}
+        <n-icon
+            v-if="documentationKey"
+            class="transition-all hover:scale-[125%]  active:scale-[95%] cursor-pointer"
+            @click="handleShowDocumentation"
+        >
+          <InfoCircle/>
+        </n-icon>
+      </p>
+      <div class="flex gap-2">
+        <template v-if="$slots.actions">
+          <slot name="actions"/>
+        </template>
+        <n-button v-if="enableContextMenu" quaternary>
+          <n-icon >
+            <EllipsisV/>
+          </n-icon>
+        </n-button>
       </div>
     </div>
     <div class="flex-1 flex-col flex overflow-hidden">
       <slot/>
     </div>
-    <!--    <p class="font-bold text-lg">{{ title }}</p>-->
-    <!--    -->
-    <!--    <div v-if="isDragOver && placeholder" class="flex-1 flex items-center justify-center">-->
-    <!--      <p class="text-center text-gray-500 text-lg">{{ placeholder }}</p>-->
-    <!--    </div>-->
-    <!--    -->
-    <!--    <div v-else class="flex-1 overflow-hidden flex flex-col">-->
-    <!--      &lt;!&ndash; Основное содержимое или empty слот &ndash;&gt;-->
-    <!--      <div class="flex-1 overflow-hidden flex flex-col">-->
-    <!--        <slot name="empty" v-if="$slots.empty && !$slots.default">-->
-    <!--          &lt;!&ndash; Показываем empty слот если он есть и нет основного контента &ndash;&gt;-->
-    <!--        </slot>-->
-    <!--        <template v-else>-->
-    <!--          <div class="flex-1 overflow-hidden">-->
-    <!--            <slot></slot>-->
-    <!--          </div>-->
-    <!--        </template>-->
-    <!--      </div>-->
-    <!--      -->
     <div
         v-if="$slots.footer"
         class="mt-auto pt-2"

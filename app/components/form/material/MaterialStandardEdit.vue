@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref, computed, onMounted, watch} from 'vue'
-import {NForm, NFormItem, NInput, NSelect, NButton, NSpace, NCard, NInputNumber} from 'naive-ui'
+import {NForm, NFormItem, NInput, NSelect, NButton, NSpace, NCard, NInputNumber, NTransfer} from 'naive-ui'
 import {useMessage} from 'naive-ui'
 import {useMaterialLibraryStore} from '~/stores/materialLibrary'
 import {storeToRefs} from 'pinia'
@@ -17,6 +17,7 @@ type FormMaterialStandard = {
   material_type_id: number | null
   material_brand_ids: number[]
   material_property_ids: number[]
+  alternative_standard_ids: number[]
 }
 
 const props = defineProps<{
@@ -30,7 +31,7 @@ const emit = defineEmits<{
 }>()
 
 const materialLibraryStore = useMaterialLibraryStore()
-const {types, brands, properties} = storeToRefs(materialLibraryStore)
+const {types, brands, properties, standards} = storeToRefs(materialLibraryStore)
 const message = useMessage()
 
 // Форма
@@ -41,7 +42,8 @@ const formValue = ref<FormMaterialStandard>({
   old_standard_id: null,
   material_type_id: null,
   material_brand_ids: [],
-  material_property_ids: []
+  material_property_ids: [],
+  alternative_standard_ids: []
 })
 
 const rules = {
@@ -73,7 +75,8 @@ watch(() => props.materialStandard, (newStandard) => {
       old_standard_id: newStandard.old_standard_id,
       material_type_id: newStandard.material_type?.id || null,
       material_brand_ids: newStandard.material_brands?.getAll().map((brand: MaterialBrand) => brand.id) || [],
-      material_property_ids: newStandard.material_properties?.getAll().map((prop: MaterialProperty) => prop.id) || []
+      material_property_ids: newStandard.material_properties?.getAll().map((prop: MaterialProperty) => prop.id) || [],
+      alternative_standard_ids: newStandard.alternative_standards?.getAll().map((standard: MaterialStandard) => standard.id) || []
     }
   } else {
     formValue.value = {
@@ -82,7 +85,8 @@ watch(() => props.materialStandard, (newStandard) => {
       old_standard_id: null,
       material_type_id: null,
       material_brand_ids: [],
-      material_property_ids: []
+      material_property_ids: [],
+      alternative_standard_ids: []
     }
   }
 }, {immediate: true})
@@ -111,6 +115,14 @@ const materialPropertyOptions = computed(() => {
   })) || []
 })
 
+// Опции для выбора альтернативных стандартов
+const alternativeStandardOptions = computed(() => {
+  return standards.value?.filterByMaterialTypeIds([props.materialStandard?.material_type?.id]).getAll().map((standard: MaterialStandard) => ({
+    label: standard.getDisplayName(),
+    value: standard.id
+  })) || []
+})
+
 // Закрытие модального окна
 const handleClose = () => {
   emit('update:show', false)
@@ -123,6 +135,12 @@ const handleSave = (e: Event) => {
   formRef.value?.validate(async (errors: any) => {
     if (!errors) {
       try {
+        // Преобразуем alternative_standard_ids в нужный формат для бэкенда
+        const alternatives = formValue.value.alternative_standard_ids.map(id => ({
+          alternative_standard_id: id,
+          bidirectional: true
+        }))
+
         if (props.materialStandard) {
           // Редактирование существующего стандарта
           await materialLibraryStore.updateMaterialStandard(props.materialStandard.id, {
@@ -131,7 +149,8 @@ const handleSave = (e: Event) => {
             old_standard_id: formValue.value.old_standard_id,
             material_type_id: formValue.value.material_type_id,
             material_brand_ids: formValue.value.material_brand_ids,
-            material_property_ids: formValue.value.material_property_ids
+            material_property_ids: formValue.value.material_property_ids,
+            alternatives: alternatives
           })
           message.success('Стандарт успешно обновлен')
         } else {
@@ -142,7 +161,8 @@ const handleSave = (e: Event) => {
             old_standard_id: formValue.value.old_standard_id,
             material_type_id: formValue.value.material_type_id,
             material_brand_ids: formValue.value.material_brand_ids,
-            material_property_ids: formValue.value.material_property_ids
+            material_property_ids: formValue.value.material_property_ids,
+            alternatives: alternatives
           })
           message.success('Стандарт успешно создан')
         }
@@ -159,7 +179,7 @@ const handleSave = (e: Event) => {
 
 onMounted(() => {
   // Убедимся, что все данные загружены
-  if (!types.value || !brands.value || !properties.value) {
+  if (!types.value || !brands.value || !properties.value || !standards.value) {
     materialLibraryStore.loadAll()
   }
 })
@@ -227,6 +247,14 @@ onMounted(() => {
             :options="materialPropertyOptions"
             placeholder="Выберите свойства материалов"
             multiple
+        />
+      </n-form-item>
+      
+      <n-form-item label="Альтернативные стандарты" path="alternative_standard_ids">
+        <n-transfer
+            v-model:value="formValue.alternative_standard_ids"
+            :options="alternativeStandardOptions"
+            placeholder="Выберите альтернативные стандарты"
         />
       </n-form-item>
     </n-form>

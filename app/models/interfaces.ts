@@ -117,11 +117,19 @@ export interface ApiMaterialStandard {
     description: string
     old_standard_id: number
   }
+  name: string
+  description: string
+  old_standard_id: number
   relationships: {
     material_type: ApiMaterialType
     material_brands: ApiMaterialBrand[]
     properties: ApiMaterialProperty[]
+    alternative_standards?: ApiMaterialStandard[]
   }
+  material_type: ApiMaterialType
+  material_brands: ApiMaterialBrand[]
+  properties: ApiMaterialProperty[]
+  alternative_standards?: ApiMaterialStandard[]
 }
 
 export interface ApiMaterial {
@@ -223,6 +231,7 @@ export interface TransformedMaterialStandard {
   material_type: TransformedMaterialType
   material_brands: TransformedMaterialBrand[]
   material_properties: TransformedMaterialProperty[]
+  alternative_standards?: TransformedMaterialStandard[]
 }
 
 export interface TransformedMaterial {

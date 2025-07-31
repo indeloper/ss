@@ -58,6 +58,13 @@ export class MaterialStandardCollection extends BaseCollection<MaterialStandard>
             .getFirst()
     }
 
+    findNotJoinedOpposite(id: number): MaterialStandard | undefined {
+        return this
+            .filterBySameBrands(id)
+            .filterByMaterialPropertiesIds([], {strict: true})
+            .getFirst()
+    }
+
     findAngleOpposite(pileMaterialId: number, angularMaterialId?: number): MaterialStandard | undefined {
 
         const pileMaterialStandard = this.findById(pileMaterialId)
@@ -138,6 +145,15 @@ export class MaterialStandardCollection extends BaseCollection<MaterialStandard>
                 if (allowEmpty && materialPropertyIds.length === 0) return true;
                 if (strict) return intersection.length === propertiesIds.length && materialPropertyIds.length === propertiesIds.length;
                 return intersection.length > 0;
+            });
+    }
+
+    filterByExcludedMaterialPropertiesIds(propertiesIds: number[]): this {
+        return this
+            .filterBy((standard) => {
+                const materialPropertyIds = standard?.material_properties?.pluck('id') || [];
+                const intersection = _.intersection(materialPropertyIds, propertiesIds);
+                return intersection.length === 0;
             });
     }
 

@@ -102,8 +102,7 @@ const tableData = computed(() => {
       size="small"
   />
   
-  <!-- Модальное окно редактирования -->
-  <FormMaterialTypeEdit 
+  <FormMaterialTypeEdit
     v-model:show="showEditModal" 
     :material-type="selectedMaterialType"
     :units="units"
@@ -111,8 +110,7 @@ const tableData = computed(() => {
     @saved="handleSaved"
   />
   
-  <!-- Модальное окно создания -->
-  <FormMaterialTypeEdit 
+  <FormMaterialTypeEdit
     v-model:show="showCreateModal" 
     :material-type="null"
     :units="units"

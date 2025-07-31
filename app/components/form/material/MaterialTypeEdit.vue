@@ -9,27 +9,22 @@ import { storeToRefs } from 'pinia'
 
 const message = useMessage()
 
-// Модель для отображения модального окна
 const show = defineModel<boolean>('show', { required: true })
 
-// Пропсы
 const props = defineProps<{
   materialType: MaterialType | null
   units: MaterialUnitCollection | null
   properties: MaterialPropertyCollection | null
 }>()
 
-// Эмиты
 const emit = defineEmits<{
   saved: [materialType: MaterialType]
   created: [materialType: MaterialType]
 }>()
 
-// Стор
 const materialLibraryStore = useMaterialLibraryStore()
 const { createMaterialType, updateMaterialType } = materialLibraryStore
 
-// Форма
 const formRef = ref()
 const name = ref('')
 const description = ref('')
@@ -38,7 +33,6 @@ const fixedQuantity = ref<boolean>(false)
 const instruction = ref('')
 const propertyIds = ref<number[]>([])
 
-// Валидация
 const formRules = {
   name: {
     required: true,
@@ -52,7 +46,6 @@ const formRules = {
   }
 }
 
-// Сброс формы
 const resetForm = () => {
   name.value = ''
   description.value = ''
@@ -62,7 +55,6 @@ const resetForm = () => {
   propertyIds.value = []
 }
 
-// Загрузка данных типа материала в форму
 watch(() => props.materialType, (newType) => {
   if (newType) {
     name.value = newType.name
@@ -76,14 +68,12 @@ watch(() => props.materialType, (newType) => {
   }
 }, { immediate: true })
 
-// Обработчик сохранения (для редактирования)
 const handleSave = async () => {
   if (!props.materialType) return
   
   try {
     await formRef.value?.validate()
     
-    // Фильтруем пустые значения из propertyIds
     const validPropertyIds = propertyIds.value.filter(id => id !== null && id !== undefined)
     
     const data = {
@@ -105,12 +95,10 @@ const handleSave = async () => {
   }
 }
 
-// Обработчик создания
 const handleCreate = async () => {
   try {
     await formRef.value?.validate()
     
-    // Фильтруем пустые значения из propertyIds
     const validPropertyIds = propertyIds.value.filter(id => id !== null && id !== undefined)
     
     const data = {
@@ -132,12 +120,10 @@ const handleCreate = async () => {
   }
 }
 
-// Обработчик отмены
 const handleCancel = () => {
   show.value = false
 }
 
-// Список единиц измерения для селекта
 const unitOptions = computed(() => {
   if (!props.units) return []
   return props.units.getAll().map(unit => ({
@@ -146,7 +132,6 @@ const unitOptions = computed(() => {
   }))
 })
 
-// Список свойств для мультиселекта
 const propertyOptions = computed(() => {
   if (!props.properties) return []
   return props.properties.getAll().map(property => ({
@@ -155,7 +140,6 @@ const propertyOptions = computed(() => {
   }))
 })
 
-// Определяем, является ли форма формой создания
 const isCreateForm = computed(() => {
   return props.materialType === null
 })

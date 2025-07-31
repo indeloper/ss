@@ -54,43 +54,35 @@ export const useMaterialLibrary = () => {
     }
 
     const createMaterialType = async (data: any) => {
-        const response = await createMaterialTypeOnServer(data)
-        // return fetchAllMaterialTypesLibrary({forceRefresh: true})
+        return await createMaterialTypeOnServer(data)
     }
 
     const updateMaterialType = async (id: number, data: any) => {
-        const response = await updateMaterialTypeOnServer(id, data)
-        // return fetchAllMaterialTypesLibrary({forceRefresh: true})
+        return await updateMaterialTypeOnServer(id, data)
     }
 
     const createMaterialBrand = async (data: any) => {
-        const response = await createMaterialBrandOnServer(data)
-        // return fetchAllMaterialBrandsLibrary({forceRefresh: true})
+        return await createMaterialBrandOnServer(data)
     }
 
     const updateMaterialBrand = async (id: number, data: any) => {
-        const response = await updateMaterialBrandOnServer(id, data)
-        // return fetchAllMaterialBrandsLibrary({forceRefresh: true})
+        return await updateMaterialBrandOnServer(id, data)
     }
 
     const createMaterialProperty = async (data: any) => {
-        const response = await createMaterialPropertyOnServer(data)
-        // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
+        return await createMaterialPropertyOnServer(data)
     }
 
     const updateMaterialProperty = async (id: number, data: any) => {
-        const response = await updateMaterialPropertyOnServer(id, data)
-        // return fetchAllMaterialPropertiesLibrary({forceRefresh: true})
+        return await updateMaterialPropertyOnServer(id, data)
     }
 
     const createMaterialStandard = async (data: any) => {
-        const response = await createMaterialStandardOnServer(data)
-        // return fetchAllMaterialStandardsLibrary({forceRefresh: true})
+        return await createMaterialStandardOnServer(data)
     }
 
     const updateMaterialStandard = async (id: number, data: any) => {
-        const response = await updateMaterialStandardOnServer(id, data)
-        // return fetchAllMaterialStandardsLibrary({forceRefresh: true})
+        return await updateMaterialStandardOnServer(id, data)
     }
 
     return {

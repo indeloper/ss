@@ -4,6 +4,7 @@
 >
 
 import type {MenuOption} from "naive-ui";
+import {Readme} from '@vicons/fa'
 
 const {logout} = useSanctum()
 
@@ -69,21 +70,49 @@ const handleNavigate = (data: string) => {
   navigateTo(data)
 }
 
+const showDocsModal = ref(false)
+
 </script>
 
 <template>
   <div class="min-h-screen relative bg-gray-100">
+<!--    <div-->
+<!--        @click="showDocsModal = !showDocsModal"-->
+<!--        class="z-[9999] animate-pulse w-12 rounded-full h-12 bg-yellow-200 shadow-lg border border-yellow-100 cursor-pointer hover:bg-yellow-300 transition-all absolute bottom-2 left-2 flex items-center justify-center"-->
+<!--    >-->
+<!--      <n-icon size="24">-->
+<!--        <Readme/>-->
+<!--      </n-icon>-->
+<!--    </div>-->
     <n-layout
         position="absolute"
     >
       <n-layout-header bordered>
         <n-card :content-style="{padding: 0}">
           <div class="flex justify-between p-2">
-            <img
-                src="/images/logo.png"
-                alt=""
-                width="180px"
-            >
+            <div class="flex items-center">
+              <div class="px-10 border-r border-gray-200 mr-4">
+                <img
+                    src="/images/logo.png"
+                    alt=""
+                    width="175px"
+                >
+              </div>
+              <n-button
+                  quaternary
+                  @click="showDocsModal = !showDocsModal"
+              >
+                <template #icon>
+                  <n-icon>
+                    <Readme/>
+                  </n-icon>
+                </template>
+
+                Документация
+              </n-button>
+            </div>
+
+
             <n-button @click="handleLogout">logout</n-button>
           </div>
         </n-card>
@@ -123,6 +152,18 @@ const handleNavigate = (data: string) => {
       </n-layout>
     </n-layout>
   </div>
+
+  <n-modal v-model:show="showDocsModal">
+    <ui-card
+        title="Документация"
+        class="w-[70vw] min-h-[80vh]"
+    >
+      <pre>
+      {{ $route.meta.docsKey }}
+
+      </pre>
+    </ui-card>
+  </n-modal>
 </template>
 
 <style scoped>

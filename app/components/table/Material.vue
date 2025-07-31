@@ -152,7 +152,7 @@ const getRowKey = (row: any) => {
 
 const handleRowClick = (row: RowData) => {
   if (row.type === 'group') return
-  
+
   console.log('Row clicked:', row)
   emit('row:click', row as Material)
 }
@@ -169,7 +169,7 @@ watch(() => filters.weightTo, filterData)
 
 const groupedData = computed(() => {
   let data = props.enableGrouping ? groupMaterialsByType(displayData.value) : displayData.value
-  
+
   // Добавляем итоговую строку как первую строку, если не скрыта
   if (!props.hideTotalWeight && allMaterials.value.length > 0) {
     const totalRow = {
@@ -179,7 +179,7 @@ const groupedData = computed(() => {
     }
     data = [totalRow, ...data]
   }
-  
+
   return data
 })
 
@@ -187,15 +187,15 @@ const groupedData = computed(() => {
 const updateExpandedKeys = () => {
   if (props.enableGrouping && groupedData.value) {
     const groupKeys = groupedData.value
-      .filter((item: any) => item.type === 'group')
-      .map((group: any) => `group-${group.uuid || group.title || group.key}`)
-    
+        .filter((item: any) => item.type === 'group')
+        .map((group: any) => `group-${group.uuid || group.title || group.key}`)
+
     expandedRowKeys.value = props.expandGroupsByDefault ? groupKeys : []
   }
 }
 
 // Следим за изменениями в группированных данных
-watch(groupedData, updateExpandedKeys, { immediate: true })
+watch(groupedData, updateExpandedKeys, {immediate: true})
 
 const columns = computed<DataTableColumns<RowData>>(() => {
   const baseColumns = [
@@ -216,14 +216,14 @@ const columns = computed<DataTableColumns<RowData>>(() => {
       } : undefined,
       render(row: RowData) {
         if (row.type === 'total') {
-          return h('span', { class: 'font-bold' }, 'ИТОГО')
+          return h('span', {class: 'font-bold'}, 'ИТОГО')
         }
         if (props.enableGrouping && row.type === 'group') {
-          return h('span', { class: 'font-bold' }, `${row.title} (${row.children.length})`)
+          return h('span', {class: 'font-bold'}, `${row.title} (${row.children.length})`)
         }
         if (!row.material_standard?.material_brands) return ''
         const brandsText = row.material_standard.material_brands.getAll().map((materialBrand: any) => materialBrand.name).join(', ')
-        return h('span', { class: 'font-medium' }, brandsText)
+        return h('span', {class: 'font-medium'}, brandsText)
       }
     },
     {
@@ -256,7 +256,7 @@ const columns = computed<DataTableColumns<RowData>>(() => {
       render(row: RowData) {
         if (row.type === 'total') return ''
         if (props.enableGrouping && row.type === 'group') {
-          return h('span', { class: 'font-bold' }, `${row.groupQuantity.toFixed(2)} ${row.children[0]?.material_standard?.material_type?.material_unit?.label || ''}`)
+          return h('span', {class: 'font-bold'}, `${row.groupQuantity.toFixed(2)} ${row.children[0]?.material_standard?.material_type?.material_unit?.label || ''}`)
         }
         if (props.enableEditing && row.type !== 'group') {
           return h(MaterialEditCell, {
@@ -269,9 +269,9 @@ const columns = computed<DataTableColumns<RowData>>(() => {
         }
         if (props.showInitials && !row.isFixedQuantity) {
           if (row.isQuantityChanged()) {
-            return h('div', { class: 'flex items-center gap-1' }, [
-              h('span', { class: 'text-red-500' }, row.getDisplayInitialQuantity()),
-              h('span', { class: 'text-gray-400' }, '→'),
+            return h('div', {class: 'flex items-center gap-1'}, [
+              h('span', {class: 'text-red-500'}, row.getDisplayInitialQuantity()),
+              h('span', {class: 'text-gray-400'}, '→'),
               h('span', row.getDisplayQuantity())
             ])
           }
@@ -289,7 +289,7 @@ const columns = computed<DataTableColumns<RowData>>(() => {
       render(row: RowData) {
         if (row.type === 'total') return ''
         if (props.enableGrouping && row.type === 'group') {
-          return h('span', { class: 'font-bold' }, `${row.groupAmount} шт.`)
+          return h('span', {class: 'font-bold'}, `${row.groupAmount} шт.`)
         }
         if (props.enableEditing && row.type !== 'group') {
           return h(MaterialEditCell, {
@@ -302,9 +302,9 @@ const columns = computed<DataTableColumns<RowData>>(() => {
         }
         if (props.showInitials) {
           if (row.isAmountChanged()) {
-            return h('div', { class: 'flex items-center gap-1' }, [
-              h('span', { class: 'text-red-500' }, row.getDisplayInitialAmount()),
-              h('span', { class: 'text-gray-400' }, '→'),
+            return h('div', {class: 'flex items-center gap-1'}, [
+              h('span', {class: 'text-red-500'}, row.getDisplayInitialAmount()),
+              h('span', {class: 'text-gray-400'}, '→'),
               h('span', row.getDisplayAmount())
             ])
           }
@@ -320,17 +320,17 @@ const columns = computed<DataTableColumns<RowData>>(() => {
       sorter: props.enableSorting ? (a: RowData, b: RowData) => a.total_weight - b.total_weight : undefined,
       render(row: RowData) {
         if (row.type === 'total') {
-          return h('span', { class: 'font-bold' }, `${row.totalWeight.toFixed(2)} т.`)
+          return h('span', {class: 'font-bold'}, `${row.totalWeight.toFixed(2)} т.`)
         }
         if (props.enableGrouping && row.type === 'group') {
-          return h('span', { class: 'font-bold' }, `${row.groupWeight.toFixed(2)} т.`)
+          return h('span', {class: 'font-bold'}, `${row.groupWeight.toFixed(2)} т.`)
         }
 
         if (props.showInitials) {
           if (row.isTotalWeightChanged()) {
-            return h('div', { class: 'flex items-center gap-1' }, [
-              h('span', { class: 'text-red-500' }, row.getDisplayInitialTotalWeight()),
-              h('span', { class: 'text-gray-400' }, '→'),
+            return h('div', {class: 'flex items-center gap-1'}, [
+              h('span', {class: 'text-red-500'}, row.getDisplayInitialTotalWeight()),
+              h('span', {class: 'text-gray-400'}, '→'),
               h('span', row.getDisplayTotalWeight())
             ])
           }
@@ -404,21 +404,8 @@ const columns = computed<DataTableColumns<RowData>>(() => {
 })
 
 const tableContainerRef = ref()
-const tableHeight = ref(400)
 
-onMounted(() => {
-  calculateTableHeight()
-})
-
-const calculateTableHeight = () => {
-  nextTick(() => {
-    if (tableContainerRef.value) {
-      const rect = tableContainerRef.value.getBoundingClientRect()
-      const viewportHeight = window.innerHeight
-      tableHeight.value = viewportHeight - rect.top - 130
-    }
-  })
-}
+// Убираем сложную логику вычисления высоты - используем CSS flexbox
 
 const rowProps = (row: Material) => ({
   onClick: () => {
@@ -426,32 +413,58 @@ const rowProps = (row: Material) => ({
   },
 })
 
-useResizeObserver(tableContainerRef, calculateTableHeight)
-
 </script>
 
 <template>
-      <n-space v-if="enableSearch || enableNumericFilters" align="center" class="mb-4">
-        <n-input
-          v-if="enableSearch"
-          v-model:value="filters.searchText"
-          placeholder="Поиск по типу, марке, свойствам..."
-          clearable
-          style="width: 300px"
-        />
-        <template v-if="enableNumericFilters">
-          <n-input-number v-model:value="filters.quantityFrom" placeholder="Объем от" style="width: 100px"/>
-          <n-input-number v-model:value="filters.quantityTo" placeholder="Объем до" style="width: 100px"/>
-          <n-input-number v-model:value="filters.amountFrom" placeholder="Кол-во от" style="width: 100px"/>
-          <n-input-number v-model:value="filters.amountTo" placeholder="Кол-во до" style="width: 100px"/>
-          <n-input-number v-model:value="filters.weightFrom" placeholder="Вес от" style="width: 100px"/>
-          <n-input-number v-model:value="filters.weightTo" placeholder="Вес до" style="width: 100px"/>
-        </template>
-        <div class="filter-info">
-          Показано: {{ displayData.length }} из {{ allMaterials.length }} материалов
-        </div>
-      </n-space>
-  <div class="flex flex-col h-full">
+  <n-space
+      v-if="enableSearch || enableNumericFilters"
+      align="center"
+      class="mb-4"
+  >
+    <n-input
+        v-if="enableSearch"
+        v-model:value="filters.searchText"
+        placeholder="Поиск по типу, марке, свойствам..."
+        clearable
+        style="width: 300px"
+    />
+    <template v-if="enableNumericFilters">
+      <n-input-number
+          v-model:value="filters.quantityFrom"
+          placeholder="Объем от"
+          style="width: 100px"
+      />
+      <n-input-number
+          v-model:value="filters.quantityTo"
+          placeholder="Объем до"
+          style="width: 100px"
+      />
+      <n-input-number
+          v-model:value="filters.amountFrom"
+          placeholder="Кол-во от"
+          style="width: 100px"
+      />
+      <n-input-number
+          v-model:value="filters.amountTo"
+          placeholder="Кол-во до"
+          style="width: 100px"
+      />
+      <n-input-number
+          v-model:value="filters.weightFrom"
+          placeholder="Вес от"
+          style="width: 100px"
+      />
+      <n-input-number
+          v-model:value="filters.weightTo"
+          placeholder="Вес до"
+          style="width: 100px"
+      />
+    </template>
+    <div class="filter-info">
+      Показано: {{ displayData.length }} из {{ allMaterials.length }} материалов
+    </div>
+  </n-space>
+  <div class="flex flex-1 flex-col h-full">
     <div
         ref="tableContainerRef"
         class="flex-1 min-h-0 overflow-hidden"
@@ -461,11 +474,11 @@ useResizeObserver(tableContainerRef, calculateTableHeight)
           :columns="columns"
           :data="groupedData"
           :loading="loading"
-          :max-height="tableHeight"
           virtual-scroll
           bordered
           class="h-full"
           :scroll-x="800"
+          :max-height="900"
           :row-key="getRowKey"
           :sort-state="enableSorting ? sortState : undefined"
           :expanded-row-keys="enableGrouping ? expandedRowKeys : undefined"

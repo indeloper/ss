@@ -280,5 +280,12 @@ export class Material extends BaseModel {
         }
     }
 
+    acceptValuesFromMaterial(material: Material): this {
+        this.amount = material.amount
+        this.quantity = material.quantity
+
+        return this
+    }
+
 
 }

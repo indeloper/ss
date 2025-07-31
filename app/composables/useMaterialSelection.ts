@@ -3,9 +3,10 @@ import {useMaterialLibraryStore} from "~/stores/materialLibrary";
 
 export const useMaterialSelection = () => {
 
-    const materialLibraryStore = useMaterialLibraryStore()
-
     const selectJoinedMaterial = (material: Material) => {
+
+        const materialLibraryStore = useMaterialLibraryStore()
+
         if (!materialLibraryStore.standards) return null
 
         const joinedStandard = materialLibraryStore.standards.findJoinedOpposite(material.material_standard.id)
@@ -16,6 +17,9 @@ export const useMaterialSelection = () => {
     }
 
     const selectAngleMaterial = (pileMaterial: Material, angularMaterial?: Material) => {
+
+        const materialLibraryStore = useMaterialLibraryStore()
+
         if (!materialLibraryStore.standards) return null
 
         if (!pileMaterial) return undefined

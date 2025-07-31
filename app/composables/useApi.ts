@@ -1,8 +1,15 @@
 import {useSanctumFetch} from '#imports'
+import {useNaiveUI} from "~/composables/useNaiveUI";
 
 export const useApi = () => {
     const get = async (route: string, options = {}) => {
-        return await useSanctumFetch(route, {method: 'GET', ...options})
+         const loadingBar  = useLoadingBarSafe()
+
+        loadingBar.start()
+        const r = await useSanctumFetch(route, {method: 'GET', ...options})
+        loadingBar.finish()
+
+        return r
     }
 
     const post = async (route: string, body?: any, options: any = {}) => {

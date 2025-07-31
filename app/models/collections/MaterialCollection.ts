@@ -60,9 +60,14 @@ export class MaterialCollection extends BaseCollection<Material> {
     filterAvailableForJoin(targetMaterialUuid?: string): this {
         return this
             .when(targetMaterialUuid === undefined, (materialsCollection) => {
-                return materialsCollection
-                    .filterByMaterialTypeIds(JOIN_TRANSFORMATION_CONFIG.allowedMaterialTypesIds)
-                    .filterByMaterialPropertiesIds(JOIN_TRANSFORMATION_CONFIG.allowedMaterialPropertiesIds, {
+                return materialsCollection.filterByMaterialTypeIds([
+                    MaterialTypes.PILE,
+                    MaterialTypes.STRAIGHT_SEAM_PIPE,
+                    MaterialTypes.I_BEAM,
+                ])
+                    .filterByMaterialPropertiesIds([
+                        MaterialProperties.JOINED,
+                    ], {
                         allowEmpty: true,
                         strict: true
                     })
@@ -70,6 +75,7 @@ export class MaterialCollection extends BaseCollection<Material> {
             .when(targetMaterialUuid !== undefined, (materialsCollection) => {
                 return materialsCollection
                     .filterBySameBrands(targetMaterialUuid)
+                    .filterByMaterialPropertiesIds([MaterialProperties.JOINED], {allowEmpty: true, strict: true})
             })
     }
 
@@ -89,6 +95,7 @@ export class MaterialCollection extends BaseCollection<Material> {
                     (material) => material.hasSameBrands(targetMaterial) && material.isPile,
                     (material) => material.isAngularElement
                 )
+                    .filterByMaterialPropertiesIds([MaterialProperties.JOINED], {allowEmpty: true, strict: true})
             })
             .when(targetMaterialUuid !== undefined && targetAngularMaterialUuid !== undefined, (materialsCollection) => {
                 const targetMaterial = materialsCollection.findByUuid(targetMaterialUuid)

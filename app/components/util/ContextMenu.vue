@@ -33,6 +33,7 @@ const handleClickoutside = () => {
 }
 
 const show = (event: MouseEvent) => {
+  console.log('shw')
   event.preventDefault()
   showDropdown.value = false
   nextTick().then(() => {

@@ -10,11 +10,12 @@ import {storeToRefs} from 'pinia'
 import type {MenuOption} from "naive-ui";
 import TRANSFORMATION_TYPES from "~/constants/transformationTypes";
 
-const loadingBar = useLoadingBar()
+
 
 definePageMeta({
   layout: 'authenticated',
   middleware: ['$auth'],
+  docsKey: 'building-material-accounting'
 })
 
 const objectsStore = useProjectObjectsStore()
@@ -41,22 +42,20 @@ const showTransformationDrawer = ref(false)
 const selectedTransformationType = ref(1)
 
 onBeforeMount(async () => {
-  loadingBar.start()
+
   materialLibraryStore.loadAll()
   await objectsStore.fetchObjects()
   objectsStore.initSelectedObject?.()
   contractorsStore.loadContractors()
   operationReasonsStore.loadSupplyReasons()
-  loadingBar.finish()
+
 })
 
 watch(
     () => selectedProjectObject.value,
     async (newValue) => {
       if (newValue) {
-        loadingBar.start()
         await materialStore.loadMaterialsByProjectObject(Number(newValue.id))
-        loadingBar.finish()
       }
     }
 )
@@ -75,7 +74,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     {
       label: 'Изготовление',
       key: 'transformation',
-      disabled: materialsLoading.value || projectObjectsLoading.value,
+      disabled: materialsLoading.value || projectObjectsLoading.value || !selectedProjectObject.value,
       children: TRANSFORMATION_TYPES.map(type => ({
         label: () => {
           return h('p', {
@@ -94,7 +93,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     {
       label: 'Движение',
       key: 'move',
-      disabled: materialsLoading.value || projectObjectsLoading.value,
+      disabled: materialsLoading.value || projectObjectsLoading.value || !selectedProjectObject.value,
       children: [
         {
           label: () => {
@@ -124,7 +123,7 @@ const menuOptions = computed<MenuOption[]>(() => {
 </script>
 
 <template>
-  <div class="flex flex-col flex-1 w-full gap-4">
+  <div class="flex flex-col flex-1 w-full gap-4 h-full">
     <CardSelectableProjectObject
         @select="objectsStore.setSelectedProjectObject"
         :loading="projectObjectsLoading || materialsLoading"
@@ -142,7 +141,7 @@ const menuOptions = computed<MenuOption[]>(() => {
     </CardSelectableProjectObject>
 
     <CardProjectObjectMaterial
-        class="min-h-screen"
+        class="flex-1"
         :active-materials="activeMaterials"
         :reserve-materials="reserveMaterials"
         :loading="materialsLoading || projectObjectsLoading"

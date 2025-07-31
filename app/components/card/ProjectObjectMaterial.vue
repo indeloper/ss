@@ -12,9 +12,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-card title="Материалы">
-    <n-tabs type="segment" animated>
-      <n-tab-pane name="active" tab="На объекте" :disabled="loading">
+  <ui-card title="Материалы" class="flex flex-col h-full">
+    <n-tabs type="segment" animated class="flex flex-col h-full">
+      <n-tab-pane name="active" tab="На объекте" :disabled="loading" class="flex flex-col h-full">
         <TableMaterial
             :materials="activeMaterials"
             :loading
@@ -22,9 +22,10 @@ const props = defineProps<{
             enable-grouping
             enable-sorting
             :expand-groups-by-default="false"
+            class="flex-1"
         />
       </n-tab-pane>
-      <n-tab-pane name="reserve" tab="В резерве" :disabled="loading">
+      <n-tab-pane name="reserve" tab="В резерве" :disabled="loading" class="flex flex-col h-full">
         <TableMaterial
             :materials="reserveMaterials"
             :loading
@@ -32,10 +33,11 @@ const props = defineProps<{
             enable-grouping
             enable-sorting
             :expand-groups-by-default="false"
+            class="flex-1"
         />
       </n-tab-pane>
     </n-tabs>
-  </n-card>
+  </ui-card>
 </template>
 
 <style scoped>

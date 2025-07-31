@@ -1,34 +1,25 @@
-<script>
+<script
+    lang="ts"
+    setup
+>
 import {NConfigProvider, NMessageProvider} from 'naive-ui'
 import {ruRU, dateRuRU} from 'naive-ui'
-import { createPinia } from 'pinia';
+import {useDocumentationStore} from "~/stores/documentation";
 
-export default {
-  components: {
-    NConfigProvider
-  },
-  data() {
-    return {
-      ruRU,
-      dateRuRU,
-      theme: {
-        common: {
-          primaryColor: '#001b41',
-          primaryColorHover: '#003366',
-          primaryColorPressed: '#004d99',
-          primaryColorSuppl: '#001b41',
-          errorColor: '#d10d2c',
-          errorColorHover: '#e63946',
-          errorColorPressed: '#f77f00',
-          errorColorSuppl: '#d10d2c'
-        }
-      }
-    };
-  },
-};
+const documentationStore = useDocumentationStore()
 
-const pinia = createPinia()
-
+const theme = {
+  common: {
+    primaryColor: '#001b41',
+    primaryColorHover: '#003366',
+    primaryColorPressed: '#004d99',
+    primaryColorSuppl: '#001b41',
+    errorColor: '#d10d2c',
+    errorColorHover: '#e63946',
+    errorColorPressed: '#f77f00',
+    errorColorSuppl: '#d10d2c'
+  }
+}
 </script>
 
 <template>
@@ -40,15 +31,27 @@ const pinia = createPinia()
     >
       <n-modal-provider>
         <n-dialog-provider>
-          <n-message-provider>
-            <n-loading-bar-provider>
-              <NuxtLayout>
-                <NuxtPage/>
-              </NuxtLayout>
-            </n-loading-bar-provider>
-          </n-message-provider>
+          <n-notification-provider>
+            <n-message-provider>
+              <n-loading-bar-provider>
+                <NuxtLayout>
+                  <NuxtPage/>
+                </NuxtLayout>
+              </n-loading-bar-provider>
+            </n-message-provider>
+          </n-notification-provider>
         </n-dialog-provider>
       </n-modal-provider>
     </n-config-provider>
   </div>
+
+  <n-modal
+      v-model:show="documentationStore.showDocumentation"
+      class="w-[70vw] min-h-[80vh]"
+      @close="documentationStore.close"
+  >
+    <ui-card>
+      <UiDocumentation :documentation-key="documentationStore.documentationKey"/>
+    </ui-card>
+  </n-modal>
 </template>
